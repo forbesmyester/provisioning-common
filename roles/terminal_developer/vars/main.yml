@@ -1,0 +1,4 @@
+terminal_developer:
+  files: "{{ ansible_env.PWD }}/roles/terminal_developer/files"
+node:
+  version: "0.10"

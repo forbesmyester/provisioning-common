@@ -1,0 +1,362 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle'
+
+" Libs
+Plugin 'tomtom/tlib_vim'
+Plugin 'Shougo/vimproc'
+" Want
+Plugin 'mbbill/undotree'
+Plugin 'stephpy/vim-yaml'
+Plugin 'chriskempson/base16-vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'plasticboy/vim-markdown'
+" Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'justinmk/vim-sneak'
+Plugin 'tmhedberg/matchit'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'mhinz/vim-signify'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'rking/ag.vim'
+Plugin 'junegunn/vim-easy-align'
+" Plugin 'jgdavey/tslime.vim'
+" Plugin 'lord-garbage/vimtux'
+Plugin 'mtth/scratch.vim'
+Plugin 'bling/vim-airline'
+" Plugin 'php.vim'
+Plugin 'chrisbra/csv.vim'
+Plugin 'digitaltoad/vim-jade'
+" Plugin 'lukerandall/haskellmode-vim'
+" Plugin 'eagletmt/ghcmod-vim'
+Plugin 'travitch/hasksyn'
+Plugin 'pangloss/vim-javascript'
+Plugin 'marijnh/tern_for_vim'
+" Plugin 'vim-scripts/CSApprox'
+Plugin 'majutsushi/tagbar'
+" Plugin 'vim-scripts/vim-pipe'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+Plugin 'mhinz/vim-tmuxify'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'typedclojure/vim-typedclojure'
+Plugin 'atweiden/vim-dragvisuals'
+Plugin 'guns/vim-clojure-highlight'
+
+call vundle#end()
+filetype plugin indent on
+
+
+" if $COLORTERM == 'gnome-terminal'
+if &term =~ '256color$' || has('gui_running')
+  set t_Co=256
+endif
+" endif
+
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
+
+" VIM Customizations
+set nocompatible
+set modelines=0
+set encoding=utf-8
+set scrolloff=5
+set sidescrolloff=5
+set display+=lastline
+set autoindent
+set complete-=i
+set shiftround
+set nrformats-=octal
+set smarttab
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.o,*.obj,*.bak,*.exe
+set visualbell
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set relativenumber
+set number
+set hls
+set timeoutlen=10000
+filetype plugin on
+
+if &encoding ==# 'latin1' && has('gui_running')
+	set encoding=utf-8
+endif
+
+" set ignorecase
+set smartcase
+" set gdefault
+set incsearch
+set showmatch
+set hlsearch
+set linebreak
+
+set backupdir=/tmp,~/tmp,/storage/emulated/legacy/tmp " backups (~)
+set directory=/tmp,~/tmp,/storage/emulated/legacy/tmp " swap files
+" set backup               " enable backups
+
+" Code Style
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" Vimdiff
+set diffopt+=iwhite
+
+" Pathogen
+" call pathogen#infect()
+" call pathogen#helptags()
+
+" Visual Style
+set list
+if &term =~ '256color$' || has('gui_running')
+    let base16colorspace=256
+    set background=dark
+    colorscheme base16-default
+    if &listchars ==# 'eol:$'
+        set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+        if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+            let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+        endif
+    endif
+    set cursorline
+    augroup CursorLine
+        autocmd!
+        au insertenter * set nocursorline
+        au insertleave * set cursorline
+    augroup end
+
+endif
+
+" = Signify =======================================================
+let g:signify_update_on_focusgained = 1
+" = Airline =======================================================
+
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup fastescape
+        autocmd!
+        au insertenter * set timeoutlen=0
+        au insertleave * set timeoutlen=1000
+    augroup end
+endif
+
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+
+" python from powerline.vim import setup as powerline_setup
+" python powerline_setup()
+" python del powerline_setup
+
+" = Number Switching ================================================
+
+augroup LineNumberFlip
+	autocmd!
+	au insertenter * :set norelativenumber
+	au insertleave * :set relativenumber
+augroup end
+map <leader>; :set norelativenumber<CR>
+
+" = Fugitive ======================================================
+
+autocmd BufReadPost fugitive://* set bufhidden=delete
+set diffopt+=vertical
+
+" = YouCompleteMe ===================================================
+
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+"
+" = GUI Visual Style ================================================
+
+set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 12
+set guioptions-=T
+set guioptions-=r
+set guioptions-=t
+syntax on
+
+" = Tern ==============================================================
+
+let g:tern_show_argument_hints='on_hold'
+" let g:tern_map_keys=1
+
+" = Haskell ===========================================================
+
+" let g:haddock_browser = "/usr/bin/chromium-browser --new-window "
+" let g:haddock_docdir = "/usr/share/doc/ghc-doc/html/"
+" let g:ghc = "/usr/bin/ghc"
+
+let g:hasksyn_indent_search_backward = 100
+let g:hasksyn_dedent_after_return = 1
+let g:hasksyn_dedent_after_catchall_case = 1
+
+" = Key Bindings ======================================================
+" let mapleader = "\<space>"
+map U <C-r>
+nmap <silent> <leader>l :nohlsearch<ESC>
+imap <Home> <esc>^i
+nnoremap <F5> :UndotreeToggle<CR>
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
+" Plugin: vim-multiple-cursors
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-A-n>'
+let g:multi_cursor_prev_key='<C-n>'
+let g:multi_cursor_skip_key='<C-A-m>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" Plugin: Rainbow
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+" = Syntastic ======================================================
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_error_symbol='✗'
+" let g:syntastic_warning_symbol='⚠'
+" let g:syntastic_style_error_symbol = '✗'
+" let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_auto_loc_list=1
+let g:syntastic_aggregate_errors = 1
+
+" Plugin: CtrlP
+let g:ctrlp_map = '<C-f>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_regexp = 1
+let g:ctrlp_max_height = 22
+let g:ctrlp_extensions = ['funky']
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
+map <C-B> :CtrlPBuffer<CR>
+
+" Plugin: plasticboy/vim-markdown
+let g:vim_markdown_folding_disabled=1
+autocmd FileType md set wrap|set linebreak|set nolist "|set textwidth=0|set wrapmargin=0|set formatoptions+=1
+
+
+function SetClojureOptions()
+    nmap <Enter> :Eval<cr>
+    " RainbowParenthesisToggle
+    " au VimEnter * RainbowParenthesesToggle
+    " au Syntax * RainbowParenthesesLoadRound
+    " au Syntax * RainbowParenthesesLoadSquare
+    " au Syntax * RainbowParenthesesLoadBraces
+endfunction
+autocmd Filetype clojure call SetClojureOptions()
+
+
+
+" ========================
+" function! TestFile_Set()
+" 	let g:testfile__file_to_test = @%
+" 	let g:testfile__filetype_to_test = &ft
+" 	echo "Test file set to " . @%
+" endfunction
+" 
+" function! TestFile_Run()
+" 	if exists("g:testfile__file_to_test")
+" 		echo "js test file: " . g:testfile__file_to_test
+" 		call SendToTmux("./node_modules/.bin/test-this-file '" . g:testfile__file_to_test . "'\n")
+" 	endif
+" endfunction
+
+function RunUnitTest()
+    if (exists("b:unittest"))
+        call SendToTmux(b:unittest . "\n")
+    endif
+endfunction
+function SetUnitTest()
+    if (exists("b:unittest"))
+        let b:unittest = input("specify command: ", b:unittest)
+    else
+        let b:unittest = input("specify command: ", "")
+    endif
+    " let b:unittest = a:a
+endfunction
+
+nmap <leader><leader>r :call SetUnitTest()<CR>
+nmap <leader>r :call RunUnitTest()<CR>
+vmap <leader>r <Plug>SendSelectionToTmux
+vmap <leader><leader>r <Plug>SetTmuxVars
+
+" vmap <C-Space>r :call SendToTmux(@* . "\n")<CR>
+:autocmd BufWritePost * :call RunUnitTest()
+au BufNewFile,BufRead *.raml set filetype=yaml
+" au BufEnter *.hs compiler ghc
+
+:com ToggleMenu if &go=~'m'|set go-=m|else|set go+=m|endif
+set go-=m
+
+nnoremap <silent> n   n:call HLNext(0.4)<cr>
+nnoremap <silent> N   N:call HLNext(0.4)<cr>
+ 
+function! HLNext (blinktime)
+	let [bufnum, lnum, col, off] = getpos('.')
+	let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+	let target_pat = '\c\%#'.@/
+	let ring = matchadd('ErrorMsg', target_pat, 101)
+	redraw
+	exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+	call matchdelete(ring)
+	redraw
+endfunction
+
+" inoremap <expr> <C-K> ShowDigraphs()
+" function! ShowDigraphs()
+"     digraphs
+"     call getchar()
+"     call feedkeys("\<C-K>")
+" endfunction
+
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()

@@ -1,0 +1,10 @@
+#!/bin/sh
+# ~/.screenlayout/home.sh
+xmodmap -e 'keycode 49 = grave asciitilde'
+
+# Caps = Control_L
+xmodmap -e 'keycode 66 = Control_L'
+xmodmap -e 'clear Lock'
+xmodmap -e 'add Control = Control_L'
+
+xmodmap -e 'keysym Scroll_Lock = Caps_Lock'

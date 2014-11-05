@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ssh-agent
+SSH_ASKPASS=ssh-askpass ssh-add && sleep 300 && git-annex assistant --autostart
