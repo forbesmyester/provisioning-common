@@ -24,12 +24,18 @@
     - ghc-haddock
     - libghc-haddock-doc
 
-- name: 'Clojure'
+- name: 'Clojure: Packages'
   apt: name={{ item }} state=present
   sudo: true
   with_items:
   - phantomjs # Austin / Clojurescript
   - default-jdk
+- name: 'Clojure: Leiningen - Git Checkout'
+  git: repo=git@github.com:technomancy/leiningen.git dest=/tmp/leiningen version=stable
+- name: 'Clojure: Leiningen - Target Directory'
+  file: name=~/.vendor/bin state=directory
+- name: 'Clojure: Leiningen - Copy to Target'
+  copy: src=/tmp/leiningen/bin/lein dest=~/.vendor/bin/lein mode=755
 
 - name: 'Vim: Packages'
   apt: name={{ item }} state=present
