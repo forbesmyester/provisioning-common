@@ -64,11 +64,9 @@ call vundle#end()
 filetype plugin indent on
 
 
-" if $COLORTERM == 'gnome-terminal'
 if &term =~ '256color$' || has('gui_running')
   set t_Co=256
 endif
-" endif
 
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
@@ -99,7 +97,6 @@ set visualbell
 set ttyfast
 set ruler
 set backspace=indent,eol,start
-set laststatus=2
 set relativenumber
 set number
 set hls
@@ -135,14 +132,15 @@ set diffopt+=iwhite
 " call pathogen#helptags()
 
 " Visual Style
-set list
 if &term =~ '256color$' || has('gui_running')
+    set laststatus=2
+    set noshowmode
     let base16colorspace=256
     set background=dark
     colorscheme base16-default
     if &listchars ==# 'eol:$'
-        set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
         if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+            set list
             let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
         endif
     endif
@@ -168,7 +166,6 @@ if ! has('gui_running')
     augroup end
 endif
 
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#enabled = 1
