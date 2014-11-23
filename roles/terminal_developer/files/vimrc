@@ -52,13 +52,16 @@ Plugin 'marijnh/tern_for_vim'
 " Plugin 'vim-scripts/CSApprox'
 Plugin 'majutsushi/tagbar'
 " Plugin 'vim-scripts/vim-pipe'
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-fireplace'
 Plugin 'mhinz/vim-tmuxify'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'typedclojure/vim-typedclojure'
-Plugin 'atweiden/vim-dragvisuals'
+
 Plugin 'guns/vim-clojure-highlight'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+Plugin 'typedclojure/vim-typedclojure'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" Plugin 'vim-scripts/paredit.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -154,6 +157,14 @@ if &term =~ '256color$' || has('gui_running')
     augroup end
 
 endif
+
+" = Paredit =======================================================
+let g:paredit_leader='\'
+let g:paredit_smartjump='\'
+" = Breakindent Patch =============================================
+set showbreak=..
+set breakindentopt=shift:0,sbr
+set breakindent
 
 " = Signify =======================================================
 let g:signify_update_on_focusgained = 1
@@ -347,16 +358,3 @@ function! HLNext (blinktime)
 	call matchdelete(ring)
 	redraw
 endfunction
-
-" inoremap <expr> <C-K> ShowDigraphs()
-" function! ShowDigraphs()
-"     digraphs
-"     call getchar()
-"     call feedkeys("\<C-K>")
-" endfunction
-
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
