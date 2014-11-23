@@ -1,7 +1,7 @@
 - name: "LinuxBrew: Install Dependencies"
   apt: name={{ item }} state=present
   with_items:
-    - python-setuputils
+    - python-setuptools
     - build-essential
     - curl
     - git
@@ -13,6 +13,7 @@
     - libexpat-dev
     - libncurses-dev
     - zlib1g-dev
+  sudo: yes
 - name: "LinuxBrew: Check"
   stat: path=~/.linuxbrew/bin
   register: linuxbrewdir
