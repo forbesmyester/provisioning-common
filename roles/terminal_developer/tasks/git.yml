@@ -1,0 +1,6 @@
+- name: "Git: Package Installation"
+  apt: name=git state=present
+- name: "Git: Configure User"
+  shell: "git config --global user.email '{{ user.email }}' ; git config --global user.name '{{ user.name }}'"
+
+

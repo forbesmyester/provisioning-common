@@ -1,0 +1,11 @@
+- name: "Install: Node Environment - Download NVM"
+  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=master
+- name: "Install: Node Environment - NVM Permissions"
+  file: path=~/.nvm/nvm.sh mode=0755
+- name: "Install: Node Environment - Install Node"
+  shell: ~/.nvm/nvm.sh install {{ node.version }}
+- name: "Install: Node Environment - Default Node Version"
+  shell: ~/.nvm/nvm.sh default {{ node.version }}
+
+
+
