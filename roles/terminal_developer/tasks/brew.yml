@@ -15,8 +15,4 @@
     - zlib1g-dev
   sudo: yes
 - name: "LinuxBrew: Check"
-  stat: path=~/.linuxbrew/bin
-  register: linuxbrewdir
-- name: "LinuxBrew: Install"
-  shell: ruby -e "$(wget -O- https://raw.github.com/Homebrew/linuxbrew/go/install)"
-  when: linuxbrewdir.stat.isdir
+  git: repo=git@github.com:Homebrew/linuxbrew.git dest=~/.linuxbrew

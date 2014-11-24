@@ -1,2 +1,33 @@
-- include: ./packages.yml
+- name: 'Required Programs'
+  apt: name={{ item }} state=present update_cache=yes
+  sudo: true
+  with_items:
+  - openssh-server
+  # - git-annex
+  # - mercurial
+  - pandoc
+  - mongodb-clients
+  # - silversearcher-ag
+  - ranger
+  - caca-utils
+
+- name: "Dot Files: .scripts"
+  file: force=yes src={{ terminal_developer.files }}/scripts dest=~/.scripts state=link
+- name: "Dot Files: .tmux.conf"
+  file: force=yes src={{ terminal_developer.files }}/tmux.conf dest=~/.tmux.conf state=link
+- name: "Dot Files: .profile"
+  file: force=yes src={{ terminal_developer.files }}/profile dest=~/.profile state=link
+- name: "Dot Files: .bashrc"
+  file: force=yes src={{ terminal_developer.files }}/bashrc dest=~/.bashrc state=link
+- name: "Dot Files: .editorconfig"
+  file: force=True src={{ terminal_developer.files }}/editorconfig dest=~/.editorconfig state=link
+
+- name: "Shell Colors"
+  git: repo=https://github.com/chriskempson/base16-shell.git dest=~/.vendor/base16-shell
+
+- include: ./vim.yml
+- include: ./node.yml
+# - include: ./haskell.yml
+- include: ./clojure.yml
+- include: ./git.yml
 - include: ./brew.yml
