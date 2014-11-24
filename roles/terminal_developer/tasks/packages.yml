@@ -51,7 +51,7 @@
   git: repo=https://github.com/gmarik/Vundle.vim.git dest=~/.vim/bundle/Vundle.vim
 
 - name: "Install: Node Environment - Download NVM"
-  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm
+  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=master
 - name: "Install: Node Environment - NVM Permissions"
   file: path=~/.nvm/nvm.sh mode=0755
 - name: "Install: Node Environment - Install Node"

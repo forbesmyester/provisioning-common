@@ -1,0 +1,22 @@
+- name: "LinuxBrew: Install Dependencies"
+  apt: name={{ item }} state=present
+  with_items:
+    - python-setuptools
+    - build-essential
+    - curl
+    - git
+    - m4
+    - ruby
+    - texinfo
+    - libbz2-dev
+    - libcurl4-openssl-dev
+    - libexpat-dev
+    - libncurses-dev
+    - zlib1g-dev
+  sudo: yes
+- name: "LinuxBrew: Check"
+  stat: path=~/.linuxbrew/bin
+  register: linuxbrewdir
+- name: "LinuxBrew: Install"
+  shell: ruby -e "$(wget -O- https://raw.github.com/Homebrew/linuxbrew/go/install)"
+  when: linuxbrewdir.stat.isdir
