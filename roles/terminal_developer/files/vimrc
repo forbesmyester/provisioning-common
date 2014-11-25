@@ -15,7 +15,7 @@ Plugin 'mbbill/undotree'
 Plugin 'stephpy/vim-yaml'
 Plugin 'chriskempson/base16-vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'vim-scripts/YankRing.vim'
+Plugin 'svermeulen/vim-easyclip'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'
@@ -26,7 +26,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
-" Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'justinmk/vim-sneak'
 Plugin 'tmhedberg/matchit'
@@ -35,33 +35,25 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'mhinz/vim-signify'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'rking/ag.vim'
 Plugin 'junegunn/vim-easy-align'
-" Plugin 'jgdavey/tslime.vim'
-" Plugin 'lord-garbage/vimtux'
 Plugin 'mtth/scratch.vim'
 Plugin 'bling/vim-airline'
-" Plugin 'php.vim'
 Plugin 'chrisbra/csv.vim'
 Plugin 'digitaltoad/vim-jade'
-" Plugin 'lukerandall/haskellmode-vim'
-" Plugin 'eagletmt/ghcmod-vim'
 Plugin 'travitch/hasksyn'
 Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
 " Plugin 'vim-scripts/CSApprox'
 Plugin 'majutsushi/tagbar'
-" Plugin 'vim-scripts/vim-pipe'
 Plugin 'mhinz/vim-tmuxify'
 Plugin 'christoomey/vim-tmux-navigator'
-
+" Clojure
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
 Plugin 'typedclojure/vim-typedclojure'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-" Plugin 'vim-scripts/paredit.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -156,9 +148,12 @@ if &term =~ '256color$' || has('gui_running')
 
 endif
 
-" = Paredit =======================================================
-let g:paredit_leader='\'
-let g:paredit_smartjump='\'
+" = EasyClip ======================================================
+let g:EasyClipUseCutDefaults = 0
+nmap <leader>d <Plug>MoveMotionPlug
+xmap <leader>d <Plug>MoveMotionXPlug
+nmap <leader>dd <Plug>MoveMotionLinePlug
+
 " = Breakindent Patch =============================================
 set showbreak=..
 set breakindentopt=shift:0,sbr
@@ -229,6 +224,7 @@ let g:hasksyn_dedent_after_catchall_case = 1
 " = Key Bindings ======================================================
 " let mapleader = "\<space>"
 map U <C-r>
+nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nmap <silent> <leader>l :nohlsearch<ESC>
 imap <Home> <esc>^i
 nnoremap <F5> :UndotreeToggle<CR>
@@ -282,6 +278,8 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_regexp = 1
 let g:ctrlp_max_height = 22
 let g:ctrlp_extensions = ['funky']
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
 map <C-B> :CtrlPBuffer<CR>
 
