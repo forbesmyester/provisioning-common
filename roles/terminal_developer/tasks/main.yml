@@ -3,6 +3,7 @@
   sudo: true
   with_items:
   - openssh-server
+  - vim
   # - git-annex
   # - mercurial
   - pandoc
@@ -25,7 +26,6 @@
 - name: "Shell Colors"
   git: repo=git@github.com:chriskempson/base16-shell.git dest=~/.vendor/base16-shell
 
-- include: ./vim.yml
 - include: ./node.yml
 # - include: ./haskell.yml
 - include: ./clojure.yml
