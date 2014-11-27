@@ -157,9 +157,11 @@ endif
 " nmap <leader>c <Plug>MoveMotionPlug i
 
 " = Breakindent Patch =============================================
-set showbreak=..
-set breakindentopt=shift:0,sbr
-set breakindent
+if v:version >=338
+    set showbreak=..
+    set breakindentopt=shift:0,sbr
+    set breakindent
+endif
 
 " = Signify =======================================================
 let g:signify_update_on_focusgained = 1
