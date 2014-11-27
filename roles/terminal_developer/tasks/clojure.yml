@@ -2,7 +2,7 @@
   apt: name={{ item }} state=present
   sudo: true
   with_items:
-  - phantomjs # Austin / Clojurescript
+  #- phantomjs # Austin / Clojurescript
   - default-jdk
 - name: 'Clojure: Leiningen - Git Checkout'
   git: repo=git@github.com:technomancy/leiningen.git dest=/tmp/leiningen version=stable
