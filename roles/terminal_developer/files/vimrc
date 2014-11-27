@@ -15,7 +15,7 @@ Plugin 'mbbill/undotree'
 Plugin 'stephpy/vim-yaml'
 Plugin 'chriskempson/base16-vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'svermeulen/vim-easyclip'
+" Plugin 'svermeulen/vim-easyclip'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'
@@ -149,10 +149,12 @@ if &term =~ '256color$' || has('gui_running')
 endif
 
 " = EasyClip ======================================================
-let g:EasyClipUseCutDefaults = 0
-nmap <leader>d <Plug>MoveMotionPlug
-xmap <leader>d <Plug>MoveMotionXPlug
-nmap <leader>dd <Plug>MoveMotionLinePlug
+" let g:EasyClipUseCutDefaults = 0
+" nmap <leader>d <Plug>MoveMotionPlug
+" xmap <leader>d <Plug>MoveMotionXPlug
+" nmap <leader>D <Plug>MoveMotionEndOfLinePlug
+" nmap <leader>dd <Plug>MoveMotionLinePlug
+" nmap <leader>c <Plug>MoveMotionPlug i
 
 " = Breakindent Patch =============================================
 set showbreak=..

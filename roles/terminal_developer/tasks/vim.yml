@@ -17,7 +17,7 @@
 - name: 'Vim: Plugins Directory'
   file: dest=~/.vim/bundle state=directory
 - name: 'Vim: Vundle Repository'
-  git: repo=https://github.com/gmarik/Vundle.vim.git dest=~/.vim/bundle/Vundle.vim
+  git: repo=git@github.com:gmarik/Vundle.vim.git dest=~/.vim/bundle/Vundle.vim
 
 - name: "Dot Files: .vimrc"
   file: force=yes src={{ terminal_developer.files }}/vimrc dest=~/.vimrc state=link

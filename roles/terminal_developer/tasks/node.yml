@@ -1,5 +1,5 @@
 - name: "Install: Node Environment - Download NVM"
-  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=master
+  git: repo=git@github.com:creationix/nvm.git dest=~/.nvm version=master
 - name: "Install: Node Environment - NVM Permissions"
   file: path=~/.nvm/nvm.sh mode=0755
 - name: "Install: Node Environment - Install Node"

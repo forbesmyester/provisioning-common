@@ -23,7 +23,7 @@
   file: force=True src={{ terminal_developer.files }}/editorconfig dest=~/.editorconfig state=link
 
 - name: "Shell Colors"
-  git: repo=https://github.com/chriskempson/base16-shell.git dest=~/.vendor/base16-shell
+  git: repo=git@github.com:chriskempson/base16-shell.git dest=~/.vendor/base16-shell
 
 - include: ./vim.yml
 - include: ./node.yml
