@@ -163,7 +163,7 @@ endif
 " nmap <leader>c <Plug>MoveMotionPlug i
 
 " = Breakindent Patch =============================================
-if v:version >=338
+if v:version > 704
     set showbreak=..
     set breakindentopt=shift:0,sbr
     set breakindent
