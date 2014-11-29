@@ -1,0 +1,15 @@
+- name: 'Required Programs'
+  apt: name={{ item }} state=present update_cache=yes
+  sudo: true
+  with_items:
+  - vim
+  - git
+
+- name: 'Vim: Plugins Directory'
+  file: dest=~/.vim/bundle state=directory
+
+- name: 'Vim: Vundle Repository'
+  git: repo=git@github.com:gmarik/Vundle.vim.git dest=~/.vim/bundle/Vundle.vim
+
+- name: "Dot Files: .vimrc"
+  file: force=yes src={{ terminal_developer.files }}/vimrc dest=~/.vimrc state=link
