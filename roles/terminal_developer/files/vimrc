@@ -34,7 +34,9 @@ Plugin 'tmhedberg/matchit'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'mhinz/vim-signify'
-Plugin 'Valloric/YouCompleteMe'
+if &term =~ '256color$' || has('gui_running')
+    Plugin 'Valloric/YouCompleteMe'
+endif
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'mtth/scratch.vim'
