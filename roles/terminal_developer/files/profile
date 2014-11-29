@@ -8,11 +8,12 @@ export LANG
 export LC_ALL
 export LC_CTYPE
 export PYTHONPATH
-if [[ -n "$GDMSESSION" ]]; then
+echo "$XAUTHORITY $TMUX $TERM"
+if [[ -n "$XAUTHORITY" ]]; then
 	export TERM=xterm-256color
 	. ~/.vendor/base16-shell/base16-default.dark.sh
 fi
-if [ -n "$TMUX" ] && [ -n "$GDMSESSION" ]; then
+if [ -n "$TMUX" ] && [ -n "$XAUTHORITY" ]; then
 	export TERM=screen-256color
 fi
 
