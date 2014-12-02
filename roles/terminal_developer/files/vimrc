@@ -14,6 +14,7 @@ Plugin 'Shougo/vimproc'
 Plugin 'mbbill/undotree'
 Plugin 'stephpy/vim-yaml'
 Plugin 'chriskempson/base16-vim'
+Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'svermeulen/vim-easyclip'
 Plugin 'kien/ctrlp.vim'
@@ -33,7 +34,9 @@ Plugin 'tmhedberg/matchit'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'mhinz/vim-signify'
-Plugin 'Valloric/YouCompleteMe'
+if &term =~ '256color$' || has('gui_running')
+    Plugin 'Valloric/YouCompleteMe'
+endif
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'mtth/scratch.vim'
@@ -147,6 +150,9 @@ if &term =~ '256color$' || has('gui_running')
         au insertleave * set cursorline
     augroup end
 
+else
+    set background=dark
+    colorscheme solarized
 endif
 
 " = EasyClip ======================================================
@@ -158,7 +164,7 @@ endif
 " nmap <leader>c <Plug>MoveMotionPlug i
 
 " = Breakindent Patch =============================================
-if v:version >=338
+if exists("&breakindent")
     set showbreak=..
     set breakindentopt=shift:0,sbr
     set breakindent
