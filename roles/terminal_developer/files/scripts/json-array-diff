@@ -1,0 +1,10 @@
+#!/bin/bash
+[ $# -ge 1 -a -f "$1" ] && input="$1" || input="-"
+JSON=$(cat $input)
+ 
+JSONA=$(echo $JSON | jq -S ".[0]" > /tmp/${USER}-a.json)
+JSONB=$(echo $JSON | jq -S ".[1]" > /tmp/${USER}-b.json)
+
+meld /tmp/${USER}-a.json /tmp/${USER}-b.json
+
+
