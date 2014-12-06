@@ -1,0 +1,7 @@
+- name: 'Required Programs'
+  apt: name={{ item }} state=present update_cache=yes
+  sudo: true
+  with_items:
+  - xscreensaver
+  - xscreensaver-screensaver-bsod
+  - roxterm
