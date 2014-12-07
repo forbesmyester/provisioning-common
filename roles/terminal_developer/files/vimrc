@@ -50,7 +50,8 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'marijnh/tern_for_vim'
 " Plugin 'vim-scripts/CSApprox'
 Plugin 'majutsushi/tagbar'
-Plugin 'mhinz/vim-tmuxify'
+" Plugin 'mhinz/vim-tmuxify'
+Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
 " Clojure
 Plugin 'guns/vim-clojure-highlight'
@@ -158,7 +159,6 @@ endif
 
 " = Sexp ==========================================================
 let g:sexp_filetypes = ''
-:nmap <leader>e v<Plug>(sexp_outer_top_list)
 
 " = EasyClip ======================================================
 " let g:EasyClipUseCutDefaults = 0
@@ -291,7 +291,7 @@ autocmd FileType md set wrap|set linebreak|set nolist "|set textwidth=0|set wrap
 
 
 function SetClojureOptions()
-    nmap <Enter> :Eval<cr>
+    " nmap <Enter> :Eval<cr>
     " RainbowParenthesisToggle
     " au VimEnter * RainbowParenthesesToggle
     " au Syntax * RainbowParenthesesLoadRound
@@ -300,43 +300,16 @@ function SetClojureOptions()
 endfunction
 autocmd Filetype clojure call SetClojureOptions()
 
+" Vimux ===========================================================
+let g:VimuxOrientation = "h"
 
-
-" ========================
-" function! TestFile_Set()
-" 	let g:testfile__file_to_test = @%
-" 	let g:testfile__filetype_to_test = &ft
-" 	echo "Test file set to " . @%
-" endfunction
-" 
-" function! TestFile_Run()
-" 	if exists("g:testfile__file_to_test")
-" 		echo "js test file: " . g:testfile__file_to_test
-" 		call SendToTmux("./node_modules/.bin/test-this-file '" . g:testfile__file_to_test . "'\n")
-" 	endif
-" endfunction
-
-function RunUnitTest()
-    if (exists("b:unittest"))
-        call SendToTmux(b:unittest . "\n")
-    endif
-endfunction
-function SetUnitTest()
-    if (exists("b:unittest"))
-        let b:unittest = input("specify command: ", b:unittest)
-    else
-        let b:unittest = input("specify command: ", "")
-    endif
-    " let b:unittest = a:a
-endfunction
-
-nmap <leader><leader>r :call SetUnitTest()<CR>
-nmap <leader>r :call RunUnitTest()<CR>
-vmap <leader>r <Plug>SendSelectionToTmux
-vmap <leader><leader>r <Plug>SetTmuxVars
+nmap <leader><leader>r :VimuxPromptCommand<CR>
+nmap <leader>r :VimuxRunLastCommand<CR>
+nmap <leader><Enter> v<Plug>(sexp_outer_top_list)<CR><ESC>:call VimuxSendText(@*)<CR>:call VimuxSendKeys("Enter")<CR><C-o>
+vmap <leader><Enter> <ESC>:call VimuxSendText(@*)<CR>:call VimuxSendKeys("Enter")<CR><C-o>
 
 " vmap <C-Space>r :call SendToTmux(@* . "\n")<CR>
-:autocmd BufWritePost * :call RunUnitTest()
+" :autocmd BufWritePost * :call RunUnitTest()
 au BufNewFile,BufRead *.raml set filetype=yaml
 " au BufEnter *.hs compiler ghc
 
