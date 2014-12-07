@@ -156,6 +156,10 @@ else
     colorscheme solarized
 endif
 
+" = Sexp ==========================================================
+let g:sexp_filetypes = ''
+:nmap <leader>e v<Plug>(sexp_outer_top_list)
+
 " = EasyClip ======================================================
 " let g:EasyClipUseCutDefaults = 0
 " nmap <leader>d <Plug>MoveMotionPlug
