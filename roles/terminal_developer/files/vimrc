@@ -304,9 +304,10 @@ autocmd Filetype clojure call SetClojureOptions()
 let g:VimuxOrientation = "h"
 
 nmap <leader><leader>r :VimuxPromptCommand<CR>
+" nmap <leader>w :call VimuxRunLastCommand<CR>
 nmap <leader>r :VimuxRunLastCommand<CR>
 nmap <leader><Enter> v<Plug>(sexp_outer_top_list)<CR><ESC>:call VimuxSendText(@*)<CR>:call VimuxSendKeys("Enter")<CR><C-o>
-vmap <leader><Enter> <ESC>:call VimuxSendText(@*)<CR>:call VimuxSendKeys("Enter")<CR><C-o>
+vmap <leader><Enter> <ESC>:call VimuxSendText(@*)<CR>:call VimuxSendKeys("Enter")<CR>
 
 " vmap <C-Space>r :call SendToTmux(@* . "\n")<CR>
 " :autocmd BufWritePost * :call RunUnitTest()
