@@ -10,13 +10,15 @@ Plugin 'gmarik/Vundle'
 " Libs
 Plugin 'tomtom/tlib_vim'
 Plugin 'Shougo/vimproc'
+Plugin 'tpope/timl'
+Plugin 'MarcWeber/vim-addon-mw-utils'
 " Want
 Plugin 'mbbill/undotree'
 Plugin 'stephpy/vim-yaml'
 Plugin 'chriskempson/base16-vim'
 Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'svermeulen/vim-easyclip'
+" Plugin 'terryma/vim-multiple-cursors'
+Plugin 'svermeulen/vim-easyclip'
 Plugin 'kien/ctrlp.vim'
 " Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'luochen1990/rainbow'
@@ -29,37 +31,37 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'justinmk/vim-sneak'
+" Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'justinmk/vim-sneak'
 Plugin 'tmhedberg/matchit'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'garbas/vim-snipmate'
+" Plugin 'garbas/vim-snipmate'
 Plugin 'mhinz/vim-signify'
 if &term =~ '256color$' || has('gui_running')
     Plugin 'Valloric/YouCompleteMe'
 endif
-Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'mtth/scratch.vim'
 Plugin 'bling/vim-airline'
 Plugin 'chrisbra/csv.vim'
 Plugin 'digitaltoad/vim-jade'
-Plugin 'travitch/hasksyn'
-Plugin 'pangloss/vim-javascript'
+" Plugin 'travitch/hasksyn'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'marijnh/tern_for_vim'
 " Plugin 'vim-scripts/CSApprox'
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 " Plugin 'mhinz/vim-tmuxify'
-Plugin 'benmills/vimux'
+" Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'jgdavey/tslime.vim'
 " Clojure
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-fireplace'
-Plugin 'typedclojure/vim-typedclojure'
+" Plugin 'tpope/vim-fireplace'
+" Plugin 'typedclojure/vim-typedclojure'
 Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 call vundle#end()
 filetype plugin indent on
@@ -86,6 +88,7 @@ set sidescrolloff=5
 set display+=lastline
 set autoindent
 set complete-=i
+set completeopt-=preview
 set shiftround
 set nrformats-=octal
 set smarttab
@@ -161,12 +164,13 @@ endif
 let g:sexp_filetypes = ''
 
 " = EasyClip ======================================================
-" let g:EasyClipUseCutDefaults = 0
+let g:EasyClipUseCutDefaults = 0
 " nmap <leader>d <Plug>MoveMotionPlug
 " xmap <leader>d <Plug>MoveMotionXPlug
 " nmap <leader>D <Plug>MoveMotionEndOfLinePlug
 " nmap <leader>dd <Plug>MoveMotionLinePlug
-" nmap <leader>c <Plug>MoveMotionPlug i
+" nmap <leader>c :EasyClipBeforeYank<cr>c
+" nmap <leader>C :EasyClipBeforeYank<cr>C
 
 " = Breakindent Patch =============================================
 if exists("&breakindent")
@@ -177,6 +181,8 @@ endif
 
 " = Signify =======================================================
 let g:signify_update_on_focusgained = 1
+autocmd WinEnter    *    SignifyRefresh
+
 " = Airline =======================================================
 
 if ! has('gui_running')
@@ -255,15 +261,6 @@ let g:multi_cursor_prev_key='<C-n>'
 let g:multi_cursor_skip_key='<C-A-m>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Plugin: Rainbow
-let g:rainbow_active = 1
-    let g:rainbow_conf = {
-    \   'guifgs': ['brown', 'Darkblue', 'darkgreen', 'darkcyan', 'darkred', 'darkmagenta', 'brown', 'darkmagenta', 'Darkblue', 'darkgreen', 'darkcyan', 'darkred', 'red'],
-    \   'ctermfgs': ['brown', 'Darkblue', 'darkgreen', 'darkcyan', 'darkred', 'darkmagenta', 'brown', 'darkmagenta', 'Darkblue', 'darkgreen', 'darkcyan', 'darkred', 'red'],
-    \   'operators': '_,_',
-    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold']
-    \}
-
 " = Syntastic ======================================================
 let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_error_symbol='✗'
@@ -281,8 +278,8 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_max_height = 22
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
+" let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git|bin'
 map <C-B> :CtrlPBuffer<CR>
 
 " Plugin: plasticboy/vim-markdown
@@ -291,6 +288,14 @@ autocmd FileType md set wrap|set linebreak|set nolist "|set textwidth=0|set wrap
 
 
 function SetClojureOptions()
+" Plugin: Rainbow
+    let g:rainbow_active = 1
+    let g:rainbow_conf = {
+    \   'guifgs': ['brown', 'Darkblue', 'darkgreen', 'darkcyan', 'darkred', 'darkmagenta', 'brown', 'darkmagenta', 'Darkblue', 'darkgreen', 'darkcyan', 'darkred', 'red'],
+    \   'ctermfgs': ['brown', 'Darkblue', 'darkgreen', 'darkcyan', 'darkred', 'darkmagenta', 'brown', 'darkmagenta', 'Darkblue', 'darkgreen', 'darkcyan', 'darkred', 'red'],
+    \   'operators': '_,_',
+    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold']
+    \}
     " nmap <Enter> :Eval<cr>
     " RainbowParenthesisToggle
     " au VimEnter * RainbowParenthesesToggle
@@ -302,12 +307,42 @@ autocmd Filetype clojure call SetClojureOptions()
 
 " Vimux ===========================================================
 let g:VimuxOrientation = "h"
+let g:tslime_ensure_trailing_newlines = 1
 
-nmap <leader><leader>r :VimuxPromptCommand<CR>
-" nmap <leader>w :call VimuxRunLastCommand<CR>
-nmap <leader>r :VimuxRunLastCommand<CR>
-nmap <leader><Enter> v<Plug>(sexp_outer_top_list)<CR><ESC>:call VimuxSendText(@*)<CR>:call VimuxSendKeys("Enter")<CR><C-o>
-vmap <leader><Enter> <ESC>:call VimuxSendText(@*)<CR>:call VimuxSendKeys("Enter")<CR>
+" function! TestFile_Set()
+" 	let g:testfile__file_to_test = @%
+" 	let g:testfile__filetype_to_test = &ft
+" 	echo "Test file set to " . @%
+" endfunction
+" 
+" function! TestFile_Run()
+" 	if exists("g:testfile__file_to_test")
+" 		echo "js test file: " . g:testfile__file_to_test
+" 		call SendToTmux("./node_modules/.bin/test-this-file '" . g:testfile__file_to_test . "'\n")
+" 	endif
+" endfunction
+
+function RunUnitTest()
+    if (exists("b:unittest"))
+        call SendToTmux(b:unittest . "\n")
+    endif
+endfunction
+function SetUnitTest()
+    if (exists("b:unittest"))
+        let b:unittest = input("specify command: ", b:unittest)
+    else
+        let b:unittest = input("specify command: ", "")
+    endif
+    " let b:unittest = a:a
+endfunction
+
+
+nmap <leader>R <Plug>SetTmuxVars
+nmap <leader><leader>R <Plug>SetTmuxVars
+nmap <leader><Enter> v<Plug>(sexp_outer_top_list)<CR><ESC><Plug>SendSelectionToTmux<C-o>
+vmap <leader><Enter> <Plug>SendSelectionToTmux
+nmap <leader><leader>r :call SetUnitTest()<CR>
+nmap <leader>r :call RunUnitTest()<CR>
 
 " vmap <C-Space>r :call SendToTmux(@* . "\n")<CR>
 " :autocmd BufWritePost * :call RunUnitTest()
