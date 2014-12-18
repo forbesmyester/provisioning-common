@@ -17,10 +17,8 @@ Plugin 'mbbill/undotree'
 Plugin 'stephpy/vim-yaml'
 Plugin 'chriskempson/base16-vim'
 Plugin 'altercation/vim-colors-solarized.git'
-" Plugin 'terryma/vim-multiple-cursors'
-Plugin 'svermeulen/vim-easyclip'
+Plugin 'vim-scripts/YankRing.vim'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'luochen1990/rainbow'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -269,7 +267,7 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_style_warning_symbol = '⚠'
 " let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_javascript_checkers = "eslint"
+let g:syntastic_javascript_checkers = ["eslint"]
 
 " Plugin: CtrlP
 let g:ctrlp_map = '<C-f>'
