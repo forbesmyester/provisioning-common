@@ -18,7 +18,8 @@ Plugin 'stephpy/vim-yaml'
 Plugin 'chriskempson/base16-vim'
 Plugin 'altercation/vim-colors-solarized.git'
 " Plugin 'terryma/vim-multiple-cursors'
-Plugin 'svermeulen/vim-easyclip'
+" Plugin 'svermeulen/vim-easyclip'
+Plugin 'vim-scripts/YankRing.vim'
 Plugin 'kien/ctrlp.vim'
 " Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'luochen1990/rainbow'
@@ -324,6 +325,7 @@ let g:tslime_ensure_trailing_newlines = 1
 
 function RunUnitTest()
     if (exists("b:unittest"))
+        call Send_keys_to_Tmux("enter")
         call SendToTmux(b:unittest . "\n")
     endif
 endfunction
@@ -339,13 +341,13 @@ endfunction
 
 nmap <leader>R <Plug>SetTmuxVars
 nmap <leader><leader>R <Plug>SetTmuxVars
-nmap <leader><Enter> v<Plug>(sexp_outer_top_list)<CR><ESC><Plug>SendSelectionToTmux<C-o>
-vmap <leader><Enter> <Plug>SendSelectionToTmux
+nmap <leader><Enter> v<Plug>(sexp_outer_top_list)<CR>k$<ESC>:call SendToTmux(@* . "\n")<CR><C-o>
+vmap <leader><Enter> :call SendToTmux(@*)<CR>
 nmap <leader><leader>r :call SetUnitTest()<CR>
 nmap <leader>r :call RunUnitTest()<CR>
 
 " vmap <C-Space>r :call SendToTmux(@* . "\n")<CR>
-" :autocmd BufWritePost * :call RunUnitTest()
+autocmd BufWritePost * :call RunUnitTest()
 au BufNewFile,BufRead *.raml set filetype=yaml
 " au BufEnter *.hs compiler ghc
 
