@@ -4,24 +4,17 @@
   with_items:
   - openssh-server
   - vim
-  # - git-annex
-  # - mercurial
   - pandoc
-  - mongodb-clients
-  # - silversearcher-ag
-  - ranger
-  - caca-utils
 
-- name: "Dot Files: .scripts"
-  file: force=yes src={{ terminal_developer.files }}/scripts dest=~/.scripts state=link
-- name: "Dot Files: .tmux.conf"
-  file: force=yes src={{ terminal_developer.files }}/tmux.conf dest=~/.tmux.conf state=link
-- name: "Dot Files: .profile"
-  file: force=yes src={{ terminal_developer.files }}/profile dest=~/.profile state=link
-- name: "Dot Files: .bashrc"
-  file: force=yes src={{ terminal_developer.files }}/bashrc dest=~/.bashrc state=link
-- name: "Dot Files: .editorconfig"
-  file: force=True src={{ terminal_developer.files }}/editorconfig dest=~/.editorconfig state=link
+- name: "Dot Files"
+  file: force=yes src={{ terminal_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
+  with_items:
+  - scripts
+  - tmux.conf
+  - profile
+  - bashrc
+  - editorconfig
+  - gitignore
 
 - name: "Shell Colors"
   git: repo=git@github.com:chriskempson/base16-shell.git dest=~/.vendor/base16-shell
