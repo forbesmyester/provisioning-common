@@ -8,3 +8,5 @@ xmodmap -e 'clear Lock'
 xmodmap -e 'add Control = Control_L'
 
 xmodmap -e 'keysym Scroll_Lock = Caps_Lock'
+
+# setxkbmap -option caps:ctrl_modifier

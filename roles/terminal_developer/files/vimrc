@@ -59,6 +59,7 @@ Plugin 'guns/vim-clojure-static'
 " Plugin 'tpope/vim-fireplace'
 " Plugin 'typedclojure/vim-typedclojure'
 Plugin 'guns/vim-sexp'
+Plugin 'rosenfeld/conque-term'
 " Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 call vundle#end()
