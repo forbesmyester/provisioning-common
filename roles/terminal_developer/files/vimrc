@@ -101,6 +101,7 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set relativenumber
+set lazyredraw
 set number
 set hls
 set timeoutlen=10000
@@ -352,9 +353,10 @@ au BufNewFile,BufRead *.raml set filetype=yaml
 :com ToggleMenu if &go=~'m'|set go-=m|else|set go+=m|endif
 set go-=m
 
-nnoremap <silent> n   n:call HLNext(0.4)<cr>
-nnoremap <silent> N   N:call HLNext(0.4)<cr>
- 
+nnoremap <silent> n   n:call HLNext(0.1)<cr>
+nnoremap <silent> N   N:call HLNext(0.1)<cr>
+nnoremap <silent> <leader>s V:'<,'>ScratchSelection<CR>:sleep 250m<CR><C-w>j
+
 function! HLNext (blinktime)
 	let [bufnum, lnum, col, off] = getpos('.')
 	let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
