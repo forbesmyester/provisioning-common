@@ -343,6 +343,7 @@ vmap <leader><Enter> :call SendToTmux(@*)<CR>
 vmap <leader>r :call SendToTmux(@*)<CR><ESC>
 nmap <leader><leader>r :call SetUnitTest()<CR>
 nmap <leader>r :call RunUnitTest()<CR>
+nmap <leader>c :call Send_keys_to_Tmux("C-c")<CR>
 
 " vmap <C-Space>r :call SendToTmux(@* . "\n")<CR>
 autocmd BufWritePost * :call RunUnitTest()
