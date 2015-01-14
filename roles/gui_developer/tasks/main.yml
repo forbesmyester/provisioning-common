@@ -5,3 +5,10 @@
   - xscreensaver
   - xscreensaver-screensaver-bsod
   - roxterm
+  - openbox
+  - fbpanel
+
+- name: "~/.config dot files"
+  file: force=yes src={{ gui_developer.files }}/config/{{ item }} dest=~/.config/{{ item }} state=link
+  with_items:
+  - scripts
