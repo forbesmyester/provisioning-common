@@ -22,7 +22,7 @@ keychain ~/.ssh/id_?sa
 xsetroot -solid '#1D1D1D'
 synapse -s &
 nm-applet &
-# parcellite
+clipit &
 /usr/lib/gvfs/gvfsd
 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
 /usr/lib/ibus/ibus-ui-gtk3 &

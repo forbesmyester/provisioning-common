@@ -3,6 +3,7 @@
   sudo: true
   with_items:
   - xscreensaver
+  - clipit
   - xscreensaver-screensaver-bsod
   - roxterm
   - openbox
