@@ -19,11 +19,10 @@
 
 
 keychain ~/.ssh/id_?sa
-srandrd ~/.i3/configure_monitors
-fbpanel &
-synapse &
+xsetroot -solid '#1D1D1D'
+synapse -s &
 nm-applet &
-parcellite
+# parcellite
 /usr/lib/gvfs/gvfsd
 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
 /usr/lib/ibus/ibus-ui-gtk3 &
@@ -31,4 +30,6 @@ parcellite
 /usr/bin/gnome-sound-applet
 blueman-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet-complete
-xsetroot -solid '#1D1D1D'
+~/.i3/configure_monitors
+srandrd ~/.i3/configure_monitors
+tint2
