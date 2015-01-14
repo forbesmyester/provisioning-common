@@ -18,10 +18,11 @@
 
 
 
+keychain ~/.ssh/id_?sa
 srandrd ~/.i3/configure_monitors
 fbpanel &
 synapse &
-nm-applet
+nm-applet &
 parcellite
 /usr/lib/gvfs/gvfsd
 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
@@ -29,6 +30,5 @@ parcellite
 /usr/bin/pulseaudio --start --log-target=syslog
 /usr/bin/gnome-sound-applet
 blueman-applet &
-# keychain ~/.ssh/id_rsa
 /usr/lib/x86_64-linux-gnu/indicator-applet-complete
 xsetroot -solid '#1D1D1D'
