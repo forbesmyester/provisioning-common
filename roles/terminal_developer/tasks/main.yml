@@ -1,8 +1,9 @@
+- include: ./ssh.yml
+
 - name: 'Required Programs'
   apt: name={{ item }} state=present update_cache=yes
   sudo: true
   with_items:
-  - openssh-server
   - vim
   - pandoc
 

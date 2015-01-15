@@ -1,0 +1,22 @@
+- name: 'Required Programs'
+  apt: name={{ item }} state=present update_cache=yes
+  sudo: true
+  with_items:
+  - openssh-server
+
+- name: 'Harden SSH (Key Exchange)'
+  lineinfile: dest=/etc/ssh/sshd_config regexp='^KexAlgorithms ' line='KexAlgorithms diffie-hellman-group-exchange-sha256'
+  sudo: true
+
+- name: 'Harden SSH (MACs)'
+lineinfile: dest=/etc/ssh/sshd_config regexp='^MACs ' line='MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,umac-128@openssh.com'
+  sudo: true
+
+- name: 'Harden SSH (Ciphers)'
+lineinfile: dest=/etc/ssh/sshd_config regexp='^Ciphers ' line='Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
+  sudo: true
+
+- name: 'Restart SSH'
+  service: name=ssh service=restarted
+  sudo: true
+
