@@ -32,4 +32,4 @@ blueman-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet-complete
 ~/.i3/configure_monitors
 srandrd ~/.i3/configure_monitors
-tint2
+tint2 &

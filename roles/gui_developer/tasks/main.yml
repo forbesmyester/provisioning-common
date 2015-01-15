@@ -1,4 +1,27 @@
-- name: 'Required Programs'
+- name: 'Synapse: Add PPA'
+  apt_repository: repo='ppa:synapse-core/testing'
+  sudo: true
+
+- name: 'Synapse: Install'
+  apt: name={{ item }} state=present update_cache=yes
+  sudo: true
+  with_items:
+    - synapse
+
+- name: 'Numix: Add PPA'
+  apt_repository: repo='ppa:numix/ppa'
+  sudo: true
+
+- name: 'Numix: Install'
+  apt: name={{ item }} state=present update_cache=yes
+  sudo: true
+  with_items:
+    - numix-gtk-theme
+    - numix-icon-theme
+    - numix-icon-theme-circle
+    - numix-plymouth-theme
+
+- name: 'Other: Install'
   apt: name={{ item }} state=present update_cache=yes
   sudo: true
   with_items:
@@ -8,6 +31,8 @@
   - roxterm
   - openbox
   - tint2
+  - lxappearance
+  - lxappearance-obconf
 
 - name: "~/.config dot files"
   file: force=yes src={{ gui_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
