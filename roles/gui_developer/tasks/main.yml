@@ -25,6 +25,7 @@
   apt: name={{ item }} state=present update_cache=yes
   sudo: true
   with_items:
+  - xorg
   - xscreensaver
   - clipit
   - xscreensaver-screensaver-bsod
