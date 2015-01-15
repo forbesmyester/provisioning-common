@@ -36,6 +36,9 @@
   - lxappearance
   - lxappearance-obconf
 
+- name: "Insure ~/.config exists"
+  file: dest=~/.config state=directory
+
 - name: "~/.config dot files"
   file: force=yes src={{ gui_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
   with_items:
