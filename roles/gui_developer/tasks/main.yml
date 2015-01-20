@@ -1,3 +1,7 @@
+- name: 'Permit X'
+  lineinfile: dest=/etc/X11/Xwrapper.config regexp='allowed_users=' line='allowed_useres=anybody'
+  sudo: true
+
 - name: 'Synapse: Add PPA'
   apt_repository: repo='ppa:synapse-core/testing'
   sudo: true
