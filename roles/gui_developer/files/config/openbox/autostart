@@ -18,11 +18,13 @@
 
 
 
+srandrd ~/.i3/configure_monitors
 keychain ~/.ssh/id_?sa
 xsetroot -solid '#1D1D1D'
 synapse -s &
 nm-applet &
 clipit &
+xscreensaver &
 /usr/lib/gvfs/gvfsd
 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
 /usr/lib/ibus/ibus-ui-gtk3 &
@@ -30,6 +32,6 @@ clipit &
 /usr/bin/gnome-sound-applet
 blueman-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet-complete
-~/.i3/configure_monitors
-srandrd ~/.i3/configure_monitors
-tint2 &
+# ~/.i3/configure_monitors
+stalonetray &
+~/.scripts/start-git-annex &
