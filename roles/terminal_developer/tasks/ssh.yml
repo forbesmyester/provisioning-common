@@ -3,6 +3,7 @@
   sudo: true
   with_items:
   - openssh-server
+  - ssh-askpass
 
 - name: 'Harden SSH (Key Exchange)'
   lineinfile: dest=/etc/ssh/sshd_config regexp='^KexAlgorithms ' line='KexAlgorithms diffie-hellman-group-exchange-sha256'
