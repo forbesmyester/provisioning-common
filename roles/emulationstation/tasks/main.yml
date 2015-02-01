@@ -1,0 +1,32 @@
+- name: 'Required Programs'
+  apt: name={{ item }} state=present
+  sudo: true
+  with_items:
+    - libsdl2-dev
+    - libboost-system-dev
+    - libboost-filesystem-dev
+    - libboost-date-time-dev
+    - libboost-locale-dev
+    - libfreeimage-dev
+    - libfreetype6-dev
+    - libeigen3-dev
+    - libcurl4-openssl-dev
+    - libasound2-dev
+    - libgl1-mesa-dev
+    - build-essential
+    - cmake
+    - git
+
+- name: "EmulationStation: Checkout"
+  git: repo=git@github.com:Aloshi/EmulationStation.git dest=/tmp/_build_emulationstation
+- name: "EmulationStation: Compile"
+  shell: "cd /tmp/_build_emulationstation; cmake .; make"
+- name: "EmulationStation: Install"
+  shell: "cd /tmp/_build_emulationstation; sudo checkinstall make install"
+  sudo: true
+
+- name: "Dot Files"
+  file: force=yes src={{ terminal_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
+  with_items:
+  - emulationstation
+  - zsnes
