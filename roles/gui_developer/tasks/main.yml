@@ -30,7 +30,7 @@
   sudo: true
   with_items:
   - xorg
-  - lightdm
+  - xdm
   - xscreensaver
   - clipit
   - xscreensaver-screensaver-bsod
