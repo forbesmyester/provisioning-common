@@ -54,3 +54,4 @@
   with_items:
   - openbox
   - fbpanel
+  - terminator
