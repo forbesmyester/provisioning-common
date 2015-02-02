@@ -55,3 +55,7 @@
   - openbox
   - fbpanel
   - terminator
+
+- name: "restart X"
+  service: xdm state=restarted
+  sudo: true
