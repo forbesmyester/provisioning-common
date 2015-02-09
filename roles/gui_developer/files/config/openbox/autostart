@@ -1,4 +1,6 @@
-#
+#!/bin/sh
+
+##
 # These things are run when an Openbox X Session is started.
 # You may place a similar script in $HOME/.config/openbox/autostart
 # to run user-specific things.
@@ -19,16 +21,16 @@
 
 
 ~/.i3/configure_monitors
-srandrd ~/.i3/configure_monitors
-xsetroot -solid '#1D1D1D'
-keychain ~/.ssh/id_?sa
+# srandrd ~/.i3/configure_monitors
+# setroot -solid '#1D1D1D'
+# keychain ~/.ssh/id_?sa
 fbpanel &
 xscreensaver &
-/usr/lib/gvfs/gvfsd
-/usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+# /usr/lib/gvfs/gvfsd
+# /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
 /usr/lib/ibus/ibus-ui-gtk3 &
 /usr/bin/pulseaudio --start --log-target=syslog
-# nm-applet &
+nm-applet &
 clipit &
 blueman-applet &
 synapse -s &

@@ -1,4 +1,5 @@
 #!/bin/sh
 
-export SSH_ASKPASS=ssh-askpass
-exec openbox
+# exec openbox &
+# sleep 1
+# ~/.config/openbox/autostart
