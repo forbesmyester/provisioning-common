@@ -30,7 +30,7 @@
   sudo: true
   with_items:
   - xorg
-  - xdm
+  - lxdm
   - xscreensaver
   - clipit
   - xscreensaver-screensaver-bsod
@@ -57,5 +57,5 @@
   - terminator
 
 - name: "restart X"
-  service: xdm state=restarted
+  service: name=lxdm state=restarted
   sudo: true
