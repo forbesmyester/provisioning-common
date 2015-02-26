@@ -20,7 +20,7 @@
 
 
 
-~/.i3/configure_monitors
+~/.x_scripts/configure_monitors
 # srandrd ~/.i3/configure_monitors
 # setroot -solid '#1D1D1D'
 # keychain ~/.ssh/id_?sa
