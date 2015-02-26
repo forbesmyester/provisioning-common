@@ -228,6 +228,8 @@ set guioptions-=r
 set guioptions-=t
 syntax on
 
+autocmd BufEnter * :syntax sync fromstart
+
 " = Tern ==============================================================
 
 let g:tern_show_argument_hints='on_hold'
