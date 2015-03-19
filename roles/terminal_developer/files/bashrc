@@ -50,7 +50,7 @@ SHELL=/bin/bash
 XDEBUG_CONFIG=ECLIPSE_DBGP
 
 source ~/.nvm/nvm.sh
-PATH=node_modules/.bin:~/.linuxbrew/bin:${PATH}:~/.scripts:~/.bin:~/.vendor/bin
+PATH=node_modules/.bin:~/.linuxbrew/bin:${PATH}:~/.x_scripts:~/.scripts:~/.bin:~/.vendor/bin
 
 # DMGT MODS
 export CC_ROOT=~/Projects/cc

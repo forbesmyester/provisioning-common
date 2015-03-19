@@ -48,6 +48,7 @@
   file: force=yes src={{ gui_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
   with_items:
   - xprofile
+  - x_scripts
 
 - name: "~/.config dot files"
   file: force=yes src={{ gui_developer.files }}/config/{{ item }} dest=~/.config/{{ item }} state=link
