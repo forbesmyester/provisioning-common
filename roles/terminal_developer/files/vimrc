@@ -118,6 +118,7 @@ set incsearch
 set showmatch
 set hlsearch
 set linebreak
+set breakat=\ 
 
 set backupdir=/tmp,~/tmp,/storage/emulated/legacy/tmp " backups (~)
 set directory=/tmp,~/tmp,/storage/emulated/legacy/tmp " swap files
