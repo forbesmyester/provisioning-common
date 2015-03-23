@@ -30,14 +30,14 @@
   sudo: true
   with_items:
   - xorg
-  - lxdm
+  - slim
   - xscreensaver
   - clipit
   - xscreensaver-screensaver-bsod
   - pcmanfm
   - roxterm
   - openbox
-  - tint2
+  - fbpanel
   - lxappearance
   - lxappearance-obconf
 

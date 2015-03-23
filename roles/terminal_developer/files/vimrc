@@ -13,6 +13,7 @@ Plugin 'Shougo/vimproc'
 Plugin 'tpope/timl'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 " Want
+Plugin 'gorkunov/smartpairs.vim'
 Plugin 'mbbill/undotree'
 Plugin 'stephpy/vim-yaml'
 Plugin 'chriskempson/base16-vim'
@@ -59,8 +60,9 @@ Plugin 'guns/vim-clojure-static'
 " Plugin 'tpope/vim-fireplace'
 " Plugin 'typedclojure/vim-typedclojure'
 Plugin 'guns/vim-sexp'
-Plugin 'rosenfeld/conque-term'
+" Plugin 'rosenfeld/conque-term'
 " Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" Plugin 'web-indent'
 
 call vundle#end()
 filetype plugin indent on
@@ -252,6 +254,7 @@ nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nmap <silent> <leader>/ :nohlsearch<ESC>
 imap <Home> <esc>^i
 nnoremap <F5> :UndotreeToggle<CR>
+nnoremap Y y$
 vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
     \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
 omap s :normal vs<CR>
@@ -369,4 +372,10 @@ function! HLNext (blinktime)
 	exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
 	call matchdelete(ring)
 	redraw
+endfunction
+
+function! Gpullrequest()
+    let cmd = 'git diff --name-only $(git branch | grep ''^\*'' | sed ''s/^* //'') $(git merge-base $(git branch | grep ''^\*'' | sed ''s/^* //'') master) | sed ''s/$/:1:Changed File/g'' |  sed "s/^/$(git rev-parse --show-cdup |sed ''s/\//\\\//g'')/g" > ' . "/tmp/$USER.vim.cfile"
+    let z = system(cmd)
+    execute "cfile /tmp/" . $USER . ".vim.cfile"
 endfunction
