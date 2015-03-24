@@ -57,10 +57,10 @@
   - fbpanel
   - terminator
 
-- name: "restart X"
-  service: name=lxdm state=restarted
-  sudo: true
+# - name: "restart X"
+#   service: name=lxdm state=restarted
+#   sudo: true
 
 - name: 'Allow suspend for admin user'
-  lineinfile: line="%admin ALL=NOPASSWD:/usr/sbin/pm-suspend" state=present validate='visudo -cf %s' dest=/etc/sudoers
+  lineinfile: line="%plugdeadmin=NOPASSWD:/usr/sbin/pm-suspend" state=present validate='visudo -cf %s' dest=/etc/sudoers
   sudo: true
