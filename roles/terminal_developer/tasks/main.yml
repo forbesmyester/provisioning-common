@@ -25,3 +25,4 @@
 - include: ./clojure.yml
 - include: ./git.yml
 - include: ./brew.yml
+- include: ./virtualbox.yml
