@@ -1,0 +1,16 @@
+- name: 'Neovim: Add PPA'
+  apt_repository: repo='ppa:neovim-ppa/unstable'
+  sudo: true
+
+- name: "Neovim: Install"
+  apt: name={{ item }} state=present update_cache=yes
+  sudo: true
+  with_items:
+    - python-dev
+    - python-pip
+    - neovim
+
+- name: "Neovim: Python Module"
+  shell: "pip install --user neovim"
+
+
