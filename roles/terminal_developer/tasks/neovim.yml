@@ -13,4 +13,5 @@
 - name: "Neovim: Python Module"
   shell: "pip install --user neovim"
 
-
+- file: force=yes src=~/.vim dest=~/.nvim state=link
+- file: force=yes src=~/.vimrc dest=~/.nvimrc state=link
