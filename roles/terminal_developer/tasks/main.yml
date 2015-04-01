@@ -28,3 +28,4 @@
 - include: ./haskell.yml
 # - include: ./brew.yml
 - include: ./virtualbox.yml
+- include: ./docker.yml
