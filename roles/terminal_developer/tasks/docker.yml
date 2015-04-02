@@ -1,23 +1,23 @@
- - apt_key: keyserver=keyserver.ubuntu.com id=36A1D7869245C8950F966E92D8576A8BA88D21E9
-   sudo: yes
-   tags:
-     - docker
-     - packages
+- apt_key: keyserver=keyserver.ubuntu.com id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+  sudo: yes
+  tags:
+    - docker
+    - packages
 
- - apt_repository: repo="deb https://get.docker.com/ubuntu docker main" update_cache=yes
-   sudo: yes
-   tags:
-     - docker
-     - packages
+- apt_repository: repo="deb https://get.docker.com/ubuntu docker main" update_cache=yes
+  sudo: yes
+  tags:
+    - docker
+    - packages
 
- - apt: name={{ item }} state=present
-   sudo: true
-   with_items:
-     - linux-image-extra-virtual
-     - lxc-docker
-   tags:
-     - docker
-     - packages
+- apt: name={{ item }} state=present
+  sudo: true
+  with_items:
+    - linux-image-extra-virtual
+    - lxc-docker
+  tags:
+    - docker
+    - packages
 
 - user: name="{{ lookup('env','USER') }}" group=docker
   sudo: true
