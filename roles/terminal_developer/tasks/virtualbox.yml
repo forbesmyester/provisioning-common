@@ -14,7 +14,7 @@
     - virtualbox
     - packages
 
-- apt_key: keyserver=pgp.mit.edu id=2099F7A4
+- apt_key: keyserver=hkp://pgp.mit.edu:80 id=2099F7A4
   sudo: yes
   tags:
     - vagrant
