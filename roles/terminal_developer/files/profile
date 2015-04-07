@@ -25,4 +25,7 @@ alias tnew='tmux new-session -As `basename $PWD`'
 mesg n
 stty -ixon
 
-# srandrd ~/.i3/big_monitor_left_of
+
+if [[ -v ROXTERM_ID ]]; then
+    keychain -q ~/.ssh/id_rsa
+fi

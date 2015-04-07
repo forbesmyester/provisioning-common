@@ -1,8 +1,50 @@
-- name: "Haskell"
+- name: "Haskell: Inststall"
   apt: name={{ item }} state=present
   sudo: true
   with_items:
+    - haskell-platform
     - ghc-haddock
     - libghc-haddock-doc
+  tags:
+    - haskell
+    - packages
 
 
+- name: "Haskell: Update Cabal"
+  shell: "{{ item }}"
+  with_items:
+    - cabal update
+  tags:
+    - haskell
+    - packages
+
+- name: "Haskell: DMGT Cabal"
+  shell: cabal install {{ item }}
+  with_items:
+    - cabal-install
+    - alex
+    - happy
+    - ghc-mod
+    - hlint
+    - stylish-haskell
+    - hoogle
+    - hasktags
+  tags:
+    - haskell
+    - packages
+
+# - name: "Haskell: Install DevIL"
+#   homebrew: name={{ item }}
+#   with_items:
+#     gcc
+#     devil
+
+- name: "Haskell: DMGT APT"
+  apt: name={{ item }} state=present
+  sudo: true
+  with_items:
+    - libdevil1c2
+    - libdevil-dev
+  tags:
+    - haskell
+    - packages
