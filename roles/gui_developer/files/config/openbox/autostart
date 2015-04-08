@@ -29,7 +29,7 @@ xscreensaver &
 /usr/lib/ibus/ibus-ui-gtk3 &
 /usr/bin/pulseaudio --start --log-target=syslog
 # nm-applet &
-clipit &
+# clipit &
 blueman-applet &
 synapse -s &
 # /usr/bin/gnome-sound-applet &
