@@ -349,8 +349,12 @@ let g:tslime_ensure_trailing_newlines = 1
 
 function RunUnitTest()
     if (exists("g:unittest"))
-        call Send_keys_to_Tmux("enter")
-        call SendToTmux(g:unittest . "\n")
+        " if &term == 'nvim'
+        "     exec "terminal " . g:unittest
+        " else
+            call Send_keys_to_Tmux("enter")
+            call SendToTmux(g:unittest . "\n")
+        " endif
     endif
 endfunction
 function SetUnitTest()
@@ -399,3 +403,11 @@ function! Gpullrequest()
     let z = system(cmd)
     execute "cfile /tmp/" . $USER . ".vim.cfile"
 endfunction
+
+if &term == 'nvim'
+    " if @% =~ '^term:'
+    tnoremap <c-h> <c-\><c-n><c-w><c-h>
+    tnoremap <c-j> <c-\><c-n><c-w><c-j>
+    tnoremap <c-k> <c-\><c-n><c-w><c-k>
+    tnoremap <c-l> <c-\><c-n><c-w><c-l>
+endif

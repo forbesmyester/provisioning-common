@@ -4,5 +4,7 @@
   with_items:
     - ghc-haddock
     - libghc-haddock-doc
+  tags:
+    - packages
 
 
