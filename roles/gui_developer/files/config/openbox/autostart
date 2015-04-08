@@ -29,10 +29,14 @@ xscreensaver &
 /usr/lib/ibus/ibus-ui-gtk3 &
 /usr/bin/pulseaudio --start --log-target=syslog
 # nm-applet &
-clipit &
+# clipit &
 blueman-applet &
 synapse -s &
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet-complete
+if [[ -n "$XAUTHORITY" ]]; then
+    SSH_ASKPASS=/usr/bin/ssh-askpass
+    keychain -q --attempts 100 ~/.ssh/id_rsa
+fi
 ~/.scripts/start-git-annex &
 ~/.x_scripts/keyboard_config
