@@ -2,6 +2,11 @@
   lineinfile: dest=/etc/X11/Xwrapper.config regexp='allowed_users=' line='allowed_useres=anybody'
   sudo: true
 
+- user: name="{{ lookup('env','USER') }}" group={{ item }}
+  with_items:
+    - plugdev
+    - netdev
+
 - name: 'Synapse: Add PPA'
   apt_repository: repo='ppa:synapse-core/testing'
   sudo: true
