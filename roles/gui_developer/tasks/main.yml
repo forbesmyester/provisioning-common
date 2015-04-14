@@ -1,5 +1,9 @@
+- name: 'Disable annoying apport harassment'
+  lineinfile: dest=/etc/default/apport regexp='enabled=' line='enabled=0'
+  sudo: true
+
 - name: 'Permit X'
-  lineinfile: dest=/etc/X11/Xwrapper.config regexp='allowed_users=' line='allowed_useres=anybody'
+  lineinfile: dest=/etc/X11/Xwrapper.config regexp='allowed_users=' line='allowed_users=anybody'
   sudo: true
 
 - user: name="{{ lookup('env','USER') }}" group={{ item }}
