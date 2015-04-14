@@ -27,5 +27,5 @@ stty -ixon
 
 
 if [[ -v ROXTERM_ID ]]; then
-    keychain -q ~/.ssh/id_rsa
+    keychain -q ~/.ssh/id_?sa
 fi
