@@ -131,6 +131,7 @@ set lazyredraw
 set number
 set hls
 set timeoutlen=10000
+set nofoldenable
 filetype plugin on
 
 if &encoding ==# 'latin1' && has('gui_running')
