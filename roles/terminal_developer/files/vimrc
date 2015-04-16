@@ -34,7 +34,9 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'tmhedberg/matchit'
 Plugin 'editorconfig/editorconfig-vim'
 " Plugin 'garbas/vim-snipmate'
-Plugin 'mhinz/vim-signify'
+" Plugin 'mhinz/vim-signify'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-rooter'
 if &term =~ '256color$' || has('gui_running')
     Plugin 'Valloric/YouCompleteMe'
 endif
@@ -188,6 +190,9 @@ else
     colorscheme solarized
 endif
 
+" = vim-rooter  ===================================================
+let g:rooter_manual_only = 1
+
 " = Sexp ==========================================================
 let g:sexp_filetypes = ''
 
@@ -207,9 +212,10 @@ if exists("&breakindent")
     set breakindent
 endif
 
-" = Signify =======================================================
-let g:signify_update_on_focusgained = 1
-autocmd WinEnter    *    SignifyRefresh
+" = GitGutter  ====================================================
+let g:gitgutter_sign_column_always=1
+let g:gitgutter_realtime=1
+set updatetime=750
 
 " = Airline =======================================================
 
