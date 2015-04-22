@@ -82,13 +82,14 @@ Plugin 'skammer/vim-css-color'
 Plugin 'stephpy/vim-yaml'
 
 " Clojure
+Plugin 'tpope/vim-fireplace'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'guns/vim-clojure-static'
-" Plugin 'tpope/vim-fireplace'
-" Plugin 'typedclojure/vim-typedclojure'
+" " Plugin 'tpope/vim-fireplace'
+" " Plugin 'typedclojure/vim-typedclojure'
 Plugin 'guns/vim-sexp'
-" Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-" Plugin 'web-indent'
+" " Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" " Plugin 'web-indent'
 
 call vundle#end()
 filetype plugin indent on
@@ -387,8 +388,8 @@ endfunction
 
 nmap <leader>R <Plug>SetTmuxVars
 nmap <leader><leader>R <Plug>SetTmuxVars
-nmap <leader><Enter> v<Plug>(sexp_outer_top_list)<CR>k$<ESC>:call SendToTmux(@* . "\n")<CR><C-o>
-vmap <leader><Enter> :call SendToTmux(@*)<CR>
+vmap <leader><Enter> :call SendToTmux(@* . "\n")<CR>
+nmap <leader><Enter> v<Plug>(sexp_outer_top_list)<CR><C-o>
 vmap <leader>r :call SendToTmux(@*)<CR><ESC>
 nmap <leader><leader>r :call SetUnitTest()<CR>
 nmap <leader>r :call RunUnitTest()<CR>
