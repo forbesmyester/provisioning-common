@@ -1,0 +1,11 @@
+- name: "Fortunes"
+  apt: name={{ item }} state=present
+  with_items:
+    - fortunes-spam
+    - fortues-ubuntu-server
+    - fortunes
+    - fortunes-bofh-excuses
+    - fortunes-debian-hints
+    - fotunes-mario
+    - fortunes-off
+

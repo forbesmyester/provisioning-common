@@ -21,6 +21,7 @@
   git: repo=git@github.com:chriskempson/base16-shell.git dest=~/.vendor/base16-shell
 
 - include: ./node.yml
+- include: ./fortune.yml
 - include: ./vim.yml
 - include: ./clojure.yml
 - include: ./git.yml
