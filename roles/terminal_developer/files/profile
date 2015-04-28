@@ -25,6 +25,10 @@ alias tnew='tmux new-session -As `basename $PWD`'
 mesg n
 stty -ixon
 
+function aliasffmpegcut() {
+    ffmpeg -ss $1 -t $2 -i $3 -acodec copy -vcodec copy -async 1 $4
+}
+alias ffmpegcut=aliasffmpegcut
 
 if [[ -v ROXTERM_ID ]]; then
     keychain -q ~/.ssh/id_?sa
