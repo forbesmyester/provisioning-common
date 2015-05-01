@@ -1,14 +1,14 @@
-- apt_key: url="https://www.virtualbox.org/download/oracle_vbox.asc" state=present
-  sudo: yes
-  tags:
-    - virtualbox
-    - packages
-- apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian trusty contrib' update_cache=yes
-  sudo: yes
-  tags:
-    - virtualbox
-    - packages
-- apt: package=virtualbox-4.3 state=present
+# - apt_key: url="https://www.virtualbox.org/download/oracle_vbox.asc" state=present
+#   sudo: yes
+#   tags:
+#     - virtualbox
+#     - packages
+# - apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian trusty contrib' update_cache=yes
+#   sudo: yes
+#   tags:
+#     - virtualbox
+#     - packages
+- apt: package=virtualbox state=present
   sudo: yes
   tags:
     - virtualbox
