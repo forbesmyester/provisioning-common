@@ -8,6 +8,12 @@
 #   tags:
 #     - virtualbox
 #     - packages
+# - apt: package=virtualbox-4.3 state=present
+#   sudo: yes
+#   tags:
+#     - virtualbox
+#     - packages
+
 - apt: package=virtualbox state=present
   sudo: yes
   tags:

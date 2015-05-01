@@ -1,11 +1,12 @@
 - name: "Fortunes"
   apt: name={{ item }} state=present
+  sudo: yes
   with_items:
     - fortunes-spam
-    - fortues-ubuntu-server
+    - fortunes-ubuntu-server
     - fortunes
     - fortunes-bofh-excuses
     - fortunes-debian-hints
-    - fotunes-mario
+    - fortunes-mario
     - fortunes-off
 

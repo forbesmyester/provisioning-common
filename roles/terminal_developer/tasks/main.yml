@@ -25,8 +25,8 @@
 - include: ./vim.yml
 - include: ./clojure.yml
 - include: ./git.yml
-- include: ./neovim.yml
+# - include: ./neovim.yml
 # - include: ./haskell.yml
 # - include: ./brew.yml
 - include: ./virtualbox.yml
-- include: ./docker.yml
+# - include: ./docker.yml
