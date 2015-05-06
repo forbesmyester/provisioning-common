@@ -10,6 +10,7 @@
   with_items:
     - plugdev
     - netdev
+  sudo: true
 
 - name: 'Synapse: Add PPA'
   apt_repository: repo='ppa:synapse-core/testing'
@@ -66,9 +67,9 @@
   - fbpanel
   - terminator
 
-# - name: "restart X"
-#   service: name=lxdm state=restarted
-#   sudo: true
+- name: "restart X"
+  service: name=slim state=restarted
+  sudo: true
 
 - name: 'Allow suspend for admin user'
   lineinfile: line="%plugdev admin=NOPASSWD:/usr/sbin/pm-suspend" state=present validate='visudo -cf %s' dest=/etc/sudoers
