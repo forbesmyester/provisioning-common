@@ -1,0 +1,4 @@
+# URxvt*font: xft:Source Code Pro for Powerline Medium:pixelsize=12:antialias=true:hinting=true
+# URxvt*boldFont: xft:Source Code Pro for Powerline Medium:bold:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=16:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=16:antialias=true:hinting=true
+URxvt*loginShell: true
