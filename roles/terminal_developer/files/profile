@@ -31,5 +31,5 @@ function aliasffmpegcut() {
 alias ffmpegcut=aliasffmpegcut
 
 if [[ -v ROXTERM_ID ]]; then
-    keychain -q ~/.ssh/id_?sa
+    keychain ~/.ssh/id_?sa
 fi
