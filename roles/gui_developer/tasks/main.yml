@@ -45,7 +45,7 @@
   - clipit
   - xscreensaver-screensaver-bsod
   - pcmanfm
-  - roxterm
+  - rxvt-unicode-256color
   - openbox
   - fbpanel
   - lxappearance
@@ -70,18 +70,28 @@
   - fbpanel
   - terminator
 
-- name: "restart X"
-  service: name=slim state=restarted
 - name: "Default Terminal Emulator"
   shell: update-alternatives --set x-terminal-emulator /usr/bin/urxvt
   sudo: true
 
-- name: "Default Web Browser"
-  shell: update-alternatives --set x-www-browser /usr/bin/google-chrome-stable
-  sudo: true
-
 - name: 'Allow suspend for admin user'
   lineinfile: line="%plugdev admin=NOPASSWD:/usr/sbin/pm-suspend" state=present validate='visudo -cf %s' dest=/etc/sudoers
+  sudo: true
+
+- name: 'Chrome: Apt Key'
+  apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
+  sudo: true
+
+- name: 'Chrome: Apt Repository'
+  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present update_cache=yes
+  sudo: true
+
+- name: 'Chrome: Install'
+  apt: name=google-chrome-stable state=present
+  sudo: true
+
+- name: "Default Web Browser"
+  shell: update-alternatives --set x-www-browser /usr/bin/google-chrome-stable
   sudo: true
 
 - name: "restart X"

@@ -30,6 +30,11 @@
     - haskell
     - packages
 
+- shell: cabal update
+  tags:
+    - haskell
+    - packages
+
 - shell: cabal install -j4 {{ item }}
   with_items:
     - "ghc-mod cabal-install base-prelude basic-prelude alex happy hlint stylish-haskell hoogle hasktags"
