@@ -12,6 +12,12 @@
     - netdev
   sudo: true
 
+- name: "Powerline Fonts: Checkout"
+  git: repo="git@github.com:powerline/fonts.git" dest=~/.fonts/powerline
+
+- name: "Powerline Fonts: Recache"
+  shell: fc-cache -f ~/.fonts
+
 # - name: 'Synapse: Add PPA'
 #   apt_repository: repo='ppa:synapse-core/testing'
 #   sudo: true
@@ -42,11 +48,13 @@
   - xorg
   - slim
   - xscreensaver
+  - parcellite
   - clipit
   - xscreensaver-screensaver-bsod
   - pcmanfm
   - rxvt-unicode-256color
   - openbox
+  - keychain
   - fbpanel
   - lxappearance
   - lxappearance-obconf
@@ -62,6 +70,8 @@
   with_items:
   - xprofile
   - x_scripts
+  - Xdefaults
+  - Xresources
 
 - name: "~/.config dot files"
   file: force=yes src={{ gui_developer.files }}/config/{{ item }} dest=~/.config/{{ item }} state=link
