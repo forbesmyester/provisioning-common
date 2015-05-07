@@ -59,7 +59,7 @@ Plugin 'digitaltoad/vim-jade'
 " Plugin 'travitch/hasksyn'
 Plugin 'dag/vim2hs'
 Plugin 'eagletmt/neco-ghc'
-Plugin 'lukerandall/haskellmode-vim'
+" Plugin 'lukerandall/haskellmode-vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
@@ -282,7 +282,7 @@ let g:haddock_docdir = "/usr/share/doc/ghc-doc/html/"
 let g:hasksyn_indent_search_backward = 100
 let g:hasksyn_dedent_after_return = 1
 let g:hasksyn_dedent_after_catchall_case = 1
-au BufEnter *.hs compiler ghc
+" au BufEnter *.hs compiler ghc
 
 " = Neco-ghc  =======================================================
 let g:necoghc_enable_detailed_browse = 1
