@@ -16,7 +16,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 " General
 Plugin 'gorkunov/smartpairs.vim'
 Plugin 'mbbill/undotree'
-" Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'luochen1990/rainbow'
@@ -39,6 +38,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'airblade/vim-rooter'
 if &term =~ '256color$' || has('gui_running')
     Plugin 'Valloric/YouCompleteMe'
+else
+    Plugin 'altercation/vim-colors-solarized.git'
 endif
 Plugin 'junegunn/vim-easy-align'
 Plugin 'mtth/scratch.vim'
