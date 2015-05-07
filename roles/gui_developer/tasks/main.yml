@@ -50,6 +50,9 @@
   - lxappearance
   - lxappearance-obconf
 
+- name: "rxvt-unicode: plugins"
+  git: repo=git@github.com:muennich/urxvt-perls.git dest=~/.urxvt/ext
+
 - name: "Insure ~/.config exists"
   file: dest=~/.config state=directory
 
