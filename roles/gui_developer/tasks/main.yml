@@ -11,15 +11,15 @@
     - plugdev
     - netdev
 
-- name: 'Synapse: Add PPA'
-  apt_repository: repo='ppa:synapse-core/testing'
-  sudo: true
+# - name: 'Synapse: Add PPA'
+#   apt_repository: repo='ppa:synapse-core/testing'
+#   sudo: true
 
-- name: 'Synapse: Install'
-  apt: name={{ item }} state=present update_cache=yes
-  sudo: true
-  with_items:
-    - synapse
+# - name: 'Synapse: Install'
+#   apt: name={{ item }} state=present update_cache=yes
+#   sudo: true
+#   with_items:
+#     - synapse
 
 - name: 'Numix: Add PPA'
   apt_repository: repo='ppa:numix/ppa'

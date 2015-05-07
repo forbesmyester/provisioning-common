@@ -32,7 +32,6 @@ xscreensaver &
 # nm-applet &
 # clipit &
 blueman-applet &
-synapse -s &
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet-complete
 ~/.scripts/start-git-annex &
