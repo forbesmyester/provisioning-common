@@ -180,7 +180,7 @@
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
     <keybind key="W-Escape">
-        <ACTION Name="ShowMenu">
+        <action name="ShowMenu">
           <menu>root-menu</menu>
         </action>
     </keybind>

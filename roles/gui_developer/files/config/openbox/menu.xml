@@ -9,8 +9,11 @@
   <item label="Terminal emulator">
     <action name="Execute"><execute>x-terminal-emulator</execute></action>
   </item>
-  <item label="Web browser">
-    <action name="Execute"><execute>x-www-browser</execute></action>
+  <item label="Chrome">
+    <action name="Execute"><execute>google-chrome-stable</execute></action>
+  </item>
+  <item label="Firefox">
+    <action name="Execute"><execute>firefox</execute></action>
   </item>
   <!-- This requires the presence of the 'menu' package to work -->
   <menu id="/Debian" />
