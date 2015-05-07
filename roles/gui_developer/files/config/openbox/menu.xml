@@ -9,8 +9,11 @@
   <item label="Terminal emulator">
     <action name="Execute"><execute>x-terminal-emulator</execute></action>
   </item>
-  <item label="Chrome">
+  <item label="Google Chrome">
     <action name="Execute"><execute>google-chrome-stable</execute></action>
+  </item>
+  <item label="Chromium">
+    <action name="Execute"><execute>chromium-browser</execute></action>
   </item>
   <item label="Firefox">
     <action name="Execute"><execute>firefox</execute></action>
