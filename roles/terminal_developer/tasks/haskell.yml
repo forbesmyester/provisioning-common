@@ -1,34 +1,51 @@
-- name: "Haskell: Inststall"
-  apt: name={{ item }} state=present
+###########################################################################
+# deb.haskell.org is currently offline
+###########################################################################
+# - apt_key: keyserver=hkp://pgp.mit.edu:80 id=B8755D4B75DCAA2D234CC879E6B69A2A4E3AC105
+#   sudo: yes
+#   tags:
+#     - packages
+
+# - apt_repository: repo="deb     http://deb.haskell.org/stable/ ./" update_cache=yes
+#   sudo: yes
+#   tags:
+#     - packages
+
+- apt_repository: repo='ppa:hvr/ghc' update_cache=yes
+  sudo: true
+  tags:
+    - haskell
+    - packages
+
+- apt: name={{ item }} state=present
   sudo: true
   with_items:
-    - haskell-platform
-    - ghc-haddock
-    - libghc-haddock-doc
+    - "ghc-{{ haskell.versions.ghc.major }}{{ haskell.versions.ghc.minor }}"
+    - "happy-{{ haskell.versions.happy.major }}{{ haskell.versions.happy.minor }}"
+    - "cabal-install-{{ haskell.versions.cabal.major }}{{ haskell.versions.cabal.minor }}"
+    - "alex-{{ haskell.versions.alex.major }}{{ haskell.versions.alex.minor }}"
+    - zlib1g-dev
+    - libtinfo-dev
   tags:
     - haskell
     - packages
 
-
-- name: "Haskell: Update Cabal"
-  shell: "{{ item }}"
+- shell: cabal install -j4 {{ item }}
   with_items:
-    - cabal update
+    - "ghc-mod cabal-install base-prelude basic-prelude alex happy hlint stylish-haskell hoogle hasktags"
   tags:
     - haskell
     - packages
 
-- name: "Haskell: DMGT Cabal"
-  shell: cabal install {{ item }}
+- apt: name={{ item }} state=present
+  sudo: true
   with_items:
-    - cabal-install
-    - alex
-    - happy
-    - ghc-mod
-    - hlint
-    - stylish-haskell
-    - hoogle
-    - hasktags
+    - libdevil-dev
+    - libadns1-dev
+    - libcrypto++-dev
+    - libssl-dev
+    - libmysqlclient-dev
+    - ca-certificates
   tags:
-    - haskell
     - packages
+    - haskell

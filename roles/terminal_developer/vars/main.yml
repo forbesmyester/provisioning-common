@@ -2,3 +2,17 @@ terminal_developer:
   files: "{{ ansible_env.PWD }}/roles/terminal_developer/files"
 node:
   version: "0.10"
+haskell:
+  versions:
+    ghc:
+      major: "7.8"
+      minor: ".4"
+    cabal:
+      major: "1.20"
+      minor: ""
+    alex:
+      major: "3.1"
+      minor: ".3"
+    happy:
+      major: "1.19"
+      minor: ".4"

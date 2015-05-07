@@ -9,7 +9,7 @@ export LC_ALL
 export LC_CTYPE
 export PYTHONPATH
 if [[ -n "$XAUTHORITY" ]]; then
-	export TERM=xterm-256color
+	# export TERM=xterm-256color
 	. ~/.vendor/base16-shell/base16-default.dark.sh
 fi
 if [ -n "$TMUX" ] && [ -n "$XAUTHORITY" ]; then
@@ -26,10 +26,10 @@ mesg n
 stty -ixon
 
 function aliasffmpegcut() {
-    ffmpeg -ss $1 -t $2 -i $3 -acodec copy -vcodec copy -async 1 $4
+    ffmpeg -ss $1 -i $3  -t $2 -acodec copy -vcodec copy -async 1 $4
 }
 alias ffmpegcut=aliasffmpegcut
 
-if [[ -v ROXTERM_ID ]]; then
-    keychain -q ~/.ssh/id_?sa
-fi
+# if [[ -v ROXTERM_ID ]]; then
+    keychain ~/.ssh/id_?sa
+# fi

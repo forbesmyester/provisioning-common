@@ -12,15 +12,15 @@
     - netdev
   sudo: true
 
-- name: 'Synapse: Add PPA'
-  apt_repository: repo='ppa:synapse-core/testing'
-  sudo: true
+# - name: 'Synapse: Add PPA'
+#   apt_repository: repo='ppa:synapse-core/testing'
+#   sudo: true
 
-- name: 'Synapse: Install'
-  apt: name={{ item }} state=present update_cache=yes
-  sudo: true
-  with_items:
-    - synapse
+# - name: 'Synapse: Install'
+#   apt: name={{ item }} state=present update_cache=yes
+#   sudo: true
+#   with_items:
+#     - synapse
 
 - name: 'Numix: Add PPA'
   apt_repository: repo='ppa:numix/ppa'
@@ -51,6 +51,9 @@
   - lxappearance
   - lxappearance-obconf
 
+- name: "rxvt-unicode: plugins"
+  git: repo=git@github.com:muennich/urxvt-perls.git dest=~/.urxvt/ext
+
 - name: "Insure ~/.config exists"
   file: dest=~/.config state=directory
 
@@ -69,8 +72,18 @@
 
 - name: "restart X"
   service: name=slim state=restarted
+- name: "Default Terminal Emulator"
+  shell: update-alternatives --set x-terminal-emulator /usr/bin/urxvt
+  sudo: true
+
+- name: "Default Web Browser"
+  shell: update-alternatives --set x-www-browser /usr/bin/google-chrome-stable
   sudo: true
 
 - name: 'Allow suspend for admin user'
   lineinfile: line="%plugdev admin=NOPASSWD:/usr/sbin/pm-suspend" state=present validate='visudo -cf %s' dest=/etc/sudoers
+  sudo: true
+
+- name: "restart X"
+  service: name=slim state=restarted
   sudo: true

@@ -19,6 +19,7 @@
 # xfce-mcs-manager &
 
 ~/.x_scripts/configure_monitors
+xrandr --dpi 96
 # srandrd ~/.i3/configure_monitors
 # setroot -solid '#1D1D1D'
 # keychain ~/.ssh/id_?sa
@@ -31,7 +32,6 @@ xscreensaver &
 # nm-applet &
 # clipit &
 blueman-applet &
-synapse -s &
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet-complete
 ~/.scripts/start-git-annex &
