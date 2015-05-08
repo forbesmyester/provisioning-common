@@ -15,6 +15,9 @@
   <item label="Chromium">
     <action name="Execute"><execute>chromium-browser</execute></action>
   </item>
+  <item label="PCManFM">
+    <action name="Execute"><execute>pcmanfm</execute></action>
+  </item>
   <item label="Firefox">
     <action name="Execute"><execute>firefox</execute></action>
   </item>
