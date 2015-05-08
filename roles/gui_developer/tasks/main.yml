@@ -10,6 +10,13 @@
   with_items:
     - plugdev
     - netdev
+  sudo: true
+
+- name: "Powerline Fonts: Checkout"
+  git: repo="git@github.com:powerline/fonts.git" dest=~/.fonts/powerline
+
+- name: "Powerline Fonts: Recache"
+  shell: fc-cache -f ~/.fonts
 
 # - name: 'Synapse: Add PPA'
 #   apt_repository: repo='ppa:synapse-core/testing'
@@ -41,11 +48,13 @@
   - xorg
   - slim
   - xscreensaver
+  - parcellite
   - clipit
   - xscreensaver-screensaver-bsod
   - pcmanfm
-  - roxterm
+  - rxvt-unicode-256color
   - openbox
+  - keychain
   - fbpanel
   - lxappearance
   - lxappearance-obconf
@@ -61,6 +70,8 @@
   with_items:
   - xprofile
   - x_scripts
+  - Xdefaults
+  - Xresources
 
 - name: "~/.config dot files"
   file: force=yes src={{ gui_developer.files }}/config/{{ item }} dest=~/.config/{{ item }} state=link
@@ -73,12 +84,24 @@
   shell: update-alternatives --set x-terminal-emulator /usr/bin/urxvt
   sudo: true
 
-- name: "Default Web Browser"
-  shell: update-alternatives --set x-www-browser /usr/bin/google-chrome-stable
-  sudo: true
-
 - name: 'Allow suspend for admin user'
   lineinfile: line="%plugdev admin=NOPASSWD:/usr/sbin/pm-suspend" state=present validate='visudo -cf %s' dest=/etc/sudoers
+  sudo: true
+
+- name: 'Chrome: Apt Key'
+  apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
+  sudo: true
+
+- name: 'Chrome: Apt Repository'
+  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present update_cache=yes
+  sudo: true
+
+- name: 'Chrome: Install'
+  apt: name=google-chrome-stable state=present
+  sudo: true
+
+- name: "Default Web Browser"
+  shell: update-alternatives --set x-www-browser /usr/bin/google-chrome-stable
   sudo: true
 
 - name: "restart X"
