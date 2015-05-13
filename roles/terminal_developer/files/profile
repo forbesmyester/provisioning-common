@@ -32,4 +32,5 @@ alias ffmpegcut=aliasffmpegcut
 
 # if [[ -v ROXTERM_ID ]]; then
     keychain ~/.ssh/id_?sa
+    source ~/.keychain/$HOSTNAME-sh
 # fi
