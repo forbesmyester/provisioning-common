@@ -17,7 +17,8 @@
     - haskell
     - packages
 
-- apt: name={{ item }} state=present
+
+- apt: name={{ item }} state=absent
   sudo: true
   with_items:
     - "ghc-{{ haskell.versions.ghc.major }}{{ haskell.versions.ghc.minor }}"
@@ -30,27 +31,39 @@
     - haskell
     - packages
 
+- apt: name={{ item }} state=present
+  sudo: true
+  with_items:
+    - ghc-7.8.4
+    - ghc-7.8.4-prof
+    - ghc-7.8.4-dyn
+    - ghc-7.8.4-htmldocs
+    - cabal-install-1.20
+  tags:
+    - haskell
+    - packages
+
 - shell: cabal update
   tags:
     - haskell
     - packages
 
-- shell: cabal install -j4 {{ item }}
-  with_items:
-    - "ghc-mod cabal-install base-prelude basic-prelude alex happy hlint stylish-haskell hoogle hasktags"
-  tags:
-    - haskell
-    - packages
+# - shell: cabal install {{ item }}
+#   with_items:
+#     - "ghc-mod cabal-install base-prelude basic-prelude alex happy hlint stylish-haskell hoogle hasktags"
+#   tags:
+#     - haskell
+#     - packages
 
-- apt: name={{ item }} state=present
-  sudo: true
-  with_items:
-    - libdevil-dev
-    - libadns1-dev
-    - libcrypto++-dev
-    - libssl-dev
-    - libmysqlclient-dev
-    - ca-certificates
-  tags:
-    - packages
-    - haskell
+# - apt: name={{ item }} state=present
+#   sudo: true
+#   with_items:
+#     - libdevil-dev
+#     - libadns1-dev
+#     - libcrypto++-dev
+#     - libssl-dev
+#     - libmysqlclient-dev
+#     - ca-certificates
+#   tags:
+#     - packages
+#     - haskell
