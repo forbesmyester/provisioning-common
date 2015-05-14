@@ -392,6 +392,7 @@ endfunction
 nmap <leader>R <Plug>SetTmuxVars
 nmap <leader><leader>R <Plug>SetTmuxVars
 vmap <leader><Enter> :call SendToTmux(@*)<CR>
+nmap <leader><Enter> <S-v><leader><Enter>
 vmap <leader>r :call SendToTmux(@*)<CR><ESC>
 nmap <leader><leader>r :call SetUnitTest()<CR>
 nmap <leader>r :call RunUnitTest()<CR>
