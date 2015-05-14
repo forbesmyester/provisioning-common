@@ -312,9 +312,14 @@
       </action>
     </keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
-    <keybind key="A-Print">
+    <keybind key="S-Print">
       <action name="Execute">
-        <command>scrot -s</command>
+        <command>scrot -u</command>
+      </action>
+    </keybind>
+    <keybind key="W-l">
+      <action name="Execute">
+        <command>xscreensaver-command -lock</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
