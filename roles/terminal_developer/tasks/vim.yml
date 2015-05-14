@@ -1,15 +1,30 @@
+- name: 'Vim: PPA with BreakIndent'
+  apt_repository: repo="ppa:pi-rho/dev" update_cache=yes
+  sudo: yes
+  tags:
+    - vim
+
 - name: 'Required Programs'
   apt: name={{ item }} state=present
   sudo: true
   with_items:
   - vim
+  - vim-gtk # Required for clipboard support, even in terminal
   - git
+  tags:
+    - vim
 
 - name: 'Vim: Plugins Directory'
   file: dest=~/.vim/bundle state=directory
+  tags:
+    - vim
 
 - name: 'Vim: Vundle Repository'
   git: repo=git@github.com:gmarik/Vundle.vim.git dest=~/.vim/bundle/Vundle.vim
+  tags:
+    - vim
 
 - name: "Dot Files: .vimrc"
   file: force=yes src={{ terminal_developer.files }}/vimrc dest=~/.vimrc state=link
+  tags:
+    - vim

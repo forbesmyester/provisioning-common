@@ -6,4 +6,4 @@ URxvt*scrollBar: false
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
-URxvt*perl-ext-common: default,clipboard,matcher
+URxvt*perl-ext-common: default,clipboard
