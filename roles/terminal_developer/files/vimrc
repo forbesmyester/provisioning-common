@@ -278,11 +278,13 @@ let g:tern_show_argument_hints='on_hold'
 
 let g:haddock_browser = "/usr/bin/chromium-browser --new-window "
 let g:haddock_docdir = "/usr/share/doc/ghc-doc/html/"
+
 " let g:ghc = "/opt/ghc/7.8.4/bin/ghc"
 
 let g:hasksyn_indent_search_backward = 100
 let g:hasksyn_dedent_after_return = 1
 let g:hasksyn_dedent_after_catchall_case = 1
+
 " au BufEnter *.hs compiler ghc
 
 " = Neco-ghc  =======================================================
@@ -390,6 +392,7 @@ endfunction
 nmap <leader>R <Plug>SetTmuxVars
 nmap <leader><leader>R <Plug>SetTmuxVars
 vmap <leader><Enter> :call SendToTmux(@*)<CR>
+nmap <leader><Enter> <S-v><leader><Enter>
 vmap <leader>r :call SendToTmux(@*)<CR><ESC>
 nmap <leader><leader>r :call SetUnitTest()<CR>
 nmap <leader>r :call RunUnitTest()<CR>

@@ -33,4 +33,5 @@ alias crepl='cabal repl --ghc-options="-ignore-dot-ghci -fdefer-type-errors"'
 
 # if [[ -v ROXTERM_ID ]]; then
     keychain ~/.ssh/id_?sa
+    source ~/.keychain/$HOSTNAME-sh
 # fi

@@ -6,12 +6,6 @@
   lineinfile: dest=/etc/X11/Xwrapper.config regexp='allowed_users=' line='allowed_users=anybody'
   sudo: true
 
-- user: name="{{ lookup('env','USER') }}" group={{ item }}
-  with_items:
-    - plugdev
-    - netdev
-  sudo: true
-
 - name: "Powerline Fonts: Checkout"
   git: repo="git@github.com:powerline/fonts.git" dest=~/.fonts/powerline
 
@@ -45,19 +39,32 @@
   apt: name={{ item }} state=present update_cache=yes
   sudo: true
   with_items:
+  - network-manager
   - xorg
   - slim
   - xscreensaver
+  - scrot
   - parcellite
   - clipit
   - xscreensaver-screensaver-bsod
   - pcmanfm
+  - xsel
   - rxvt-unicode-256color
+  - chromium-browser
   - openbox
+  - pm-utils
   - keychain
   - fbpanel
   - lxappearance
   - lxappearance-obconf
+  - firefox
+  - firefox-locale-en
+
+- user: name="{{ lookup('env','USER') }}" group={{ item }}
+  with_items:
+    - plugdev
+    - netdev
+  sudo: true
 
 - name: "rxvt-unicode: plugins"
   git: repo=git@github.com:muennich/urxvt-perls.git dest=~/.urxvt/ext
