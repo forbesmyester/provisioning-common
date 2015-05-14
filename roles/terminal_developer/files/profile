@@ -29,6 +29,7 @@ function aliasffmpegcut() {
     ffmpeg -ss $1 -i $3  -t $2 -acodec copy -vcodec copy -async 1 $4
 }
 alias ffmpegcut=aliasffmpegcut
+alias crepl='cabal repl --ghc-options="-ignore-dot-ghci -fdefer-type-errors"'
 
 # if [[ -v ROXTERM_ID ]]; then
     keychain ~/.ssh/id_?sa
