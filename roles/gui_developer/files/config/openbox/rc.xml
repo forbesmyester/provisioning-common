@@ -317,6 +317,11 @@
         <command>scrot -u</command>
       </action>
     </keybind>
+    <keybind key="W-m">
+      <action name="Execute">
+        <command>configure_monitors</command>
+      </action>
+    </keybind>
     <keybind key="W-l">
       <action name="Execute">
         <command>xscreensaver-command -lock</command>
