@@ -88,7 +88,7 @@
   - terminator
 
 - name: "Default Terminal Emulator"
-  shell: update-alternatives --set x-terminal-emulator /usr/bin/terminator
+  shell: update-alternatives --set x-terminal-emulator /usr/bin/urxvt
   sudo: true
 
 - name: 'Allow suspend for admin user'
