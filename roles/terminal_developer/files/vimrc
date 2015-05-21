@@ -97,10 +97,6 @@ call vundle#end()
 filetype plugin indent on
 
 
-if &term =~ '256color$' || has('gui_running') || &term == 'nvim'
-  set t_Co=256
-endif
-
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
@@ -169,7 +165,9 @@ set diffopt+=iwhite
 " call pathogen#helptags()
 
 " Visual Style
-if &term =~ '256color$' || has('gui_running') || &term == 'nvim'
+" let z=$COLORTERM
+" if &term =~ '256color$' || has('gui_running') || &term == 'nvim' || $COLORTERM =~ "."
+    set t_Co=256
     set laststatus=2
     set noshowmode
     let base16colorspace=256
@@ -188,10 +186,10 @@ if &term =~ '256color$' || has('gui_running') || &term == 'nvim'
         au insertleave * set cursorline
     augroup end
 
-else
-    set background=dark
-    colorscheme solarized
-endif
+" else
+"     set background=dark
+"     colorscheme solarized
+" endif
 
 " = vim-rooter  ===================================================
 let g:rooter_manual_only = 1
@@ -282,9 +280,9 @@ let g:haddock_docdir = "/usr/share/doc/ghc-doc/html/"
 
 " let g:ghc = "/opt/ghc/7.8.4/bin/ghc"
 
-let g:haskell_conceal_wide = 0
-let g:haskell_conceal              = 0
-let g:haskell_conceal_enumerations = 0
+let g:haskell_conceal_wide = 1
+let g:haskell_conceal              = 1
+let g:haskell_conceal_enumerations = 1
 let g:hasksyn_indent_search_backward = 100
 let g:hasksyn_dedent_after_return = 1
 let g:hasksyn_dedent_after_catchall_case = 1
