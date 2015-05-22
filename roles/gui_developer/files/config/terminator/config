@@ -1,14 +1,35 @@
 [global_config]
+  enabled_plugins = ,
+  title_transmit_bg_color = "#ab4642"
+  inactive_color_offset = 1.0
+  title_inactive_bg_color = "#585858"
 [keybindings]
 [profiles]
   [[default]]
-    palette = "#2d2d2d:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#d3d0c8:#747369:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#f2f0ec"
-    login_shell = True
+    palette = "#181818:#ab4642:#a1b56c:#f7ca88:#7cafc2:#ba8baf:#86c1b9:#d8d8d8:#585858:#ab4642:#a1b56c:#f7ca88:#7cafc2:#ba8baf:#86c1b9:#f8f8f8"
+    font = Source Code Pro for Powerline Medium 13
     background_image = None
     use_system_font = False
-    cursor_color = "#d3d0c8"
-    foreground_color = "#d3d0c8"
+    cursor_color = "#d8d8d8"
+    foreground_color = "#d8d8d8"
+    copy_on_selection = True
+    background_color = "#181818"
+    allow_bold = False
+  [[Base16 Default Dark]]
+    scrollbar_position = hidden
+    palette = "#181818:#ab4642:#a1b56c:#f7ca88:#7cafc2:#ba8baf:#86c1b9:#d8d8d8:#585858:#ab4642:#a1b56c:#f7ca88:#7cafc2:#ba8baf:#86c1b9:#f8f8f8"
+    copy_on_selection = True
+    alternate_screen_scroll = False
+    visible_bell = True
+    background_image = None
+    scrollback_lines = 2048
+    use_system_font = False
+    cursor_color = "#d8d8d8"
+    foreground_color = "#d8d8d8"
+    login_shell = True
+    scroll_on_output = False
     show_titlebar = False
+    scroll_on_keystroke = False
     font = Source Code Pro for Powerline Medium 12
     background_color = "#181818"
 [layouts]
@@ -16,6 +37,7 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = Base16 Default Dark
     [[[window0]]]
       type = Window
       parent = ""
