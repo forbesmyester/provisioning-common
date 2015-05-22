@@ -18,6 +18,7 @@
 #
 # xfce-mcs-manager &
 
+xrdb -load ~/.Xresources
 ~/.x_scripts/configure_monitors
 xrandr --dpi 96
 # srandrd ~/.i3/configure_monitors

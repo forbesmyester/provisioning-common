@@ -41,7 +41,9 @@
   with_items:
   - network-manager
   - xorg
-  - slim
+  # - slim
+  - openbox-gnome-session
+  - lightdm
   - xscreensaver
   - scrot
   - parcellite
@@ -111,6 +113,6 @@
   shell: update-alternatives --set x-www-browser /usr/bin/google-chrome-stable
   sudo: true
 
-- name: "restart X"
-  service: name=slim state=restarted
-  sudo: true
+# - name: "restart X"
+#   service: name=slim state=restarted
+#   sudo: true
