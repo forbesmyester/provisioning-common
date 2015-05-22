@@ -108,8 +108,8 @@
 
 
 Global {
-    edge = bottom
-    allign = left
+    edge = top
+    allign = right
     margin = 0
     widthtype = percent
     width = 30
