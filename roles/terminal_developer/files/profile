@@ -15,23 +15,23 @@ fi
 if [ -n "$TMUX" ] && [ -n "$XAUTHORITY" ]; then
 	export TERM=screen-256color
 fi
-
+# 
 #export EDITOR JAVA_HOME JAVA_PATH JDK_HOME CLASSPATH http_proxy
 export EDITOR http_proxy
 alias mysql='INPUTRC=~/.mysql_inputrc mysql'
 alias i3-lock=i3lock
 alias tnew='tmux new-session -As `basename $PWD`'
 
-mesg n
-stty -ixon
+if [ -t 1 ]; then
+    mesg n
+    stty -ixon
 
-function aliasffmpegcut() {
-    ffmpeg -ss $1 -i $3  -t $2 -acodec copy -vcodec copy -async 1 $4
-}
-alias ffmpegcut=aliasffmpegcut
-alias crepl='cabal repl --ghc-options="-ignore-dot-ghci -fdefer-type-errors"'
+    function aliasffmpegcut() {
+        ffmpeg -ss $1 -i $3  -t $2 -acodec copy -vcodec copy -async 1 $4
+    }
+    alias ffmpegcut=aliasffmpegcut
+    alias crepl='cabal repl --ghc-options="-ignore-dot-ghci -fdefer-type-errors"'
 
-# if [[ -v ROXTERM_ID ]]; then
     keychain ~/.ssh/id_?sa
     source ~/.keychain/$HOSTNAME-sh
-# fi
+fi
