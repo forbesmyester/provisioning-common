@@ -80,6 +80,7 @@
   file: force=yes src={{ gui_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
   with_items:
   - xprofile
+  - xscreensaver
   - x_scripts
   - Xdefaults
   - Xresources
