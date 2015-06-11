@@ -28,12 +28,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'Soares/butane.vim'
-" Plugin 'Lokaltog/vim-easymotion'
-" Plugin 'justinmk/vim-sneak'
 Plugin 'tmhedberg/matchit'
 Plugin 'editorconfig/editorconfig-vim'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'mhinz/vim-signify'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'airblade/vim-rooter'
 if &term =~ '256color$' || has('gui_running')
@@ -50,7 +46,7 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
 
 " CSV
-Plugin 'chrisbra/csv.vim'
+" Plugin 'chrisbra/csv.vim'
 
 " Jade
 Plugin 'digitaltoad/vim-jade'
@@ -75,9 +71,6 @@ Plugin 'jgdavey/tslime.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'mhinz/vim-tmuxify'
 " Plugin 'benmills/vimux'
-
-" CSS
-Plugin 'skammer/vim-css-color'
 
 " Yaml
 Plugin 'stephpy/vim-yaml'
