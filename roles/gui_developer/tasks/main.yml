@@ -118,6 +118,17 @@
   shell: update-alternatives --set x-www-browser /usr/bin/google-chrome-stable
   sudo: true
 
-# - name: "restart X"
-#   service: name=slim state=restarted
-#   sudo: true
+
+- name: "Ensure Network Manager starts properly"
+  copy: src=/etc/network/interfaces dest=/etc/network/interfaces.orig owner=root
+  sudo: true
+  tags:
+    - system
+    - networking
+
+- name: "Ensure Network Manager starts properly"
+  shell: cat /etc/network/interfaces.orig | sed '/eth/ s/^#*/# /' > /etc/network/interfaces
+  sudo: true
+  tags:
+    - system
+    - networking
