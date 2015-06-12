@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ##
 # These things are run when an Openbox X Session is started.
@@ -21,19 +21,20 @@
 xrdb -load ~/.Xresources
 ~/.x_scripts/configure_monitors
 xrandr --dpi 96
-# srandrd ~/.i3/configure_monitors
-# setroot -solid '#1D1D1D'
+xsetroot -solid '#1D1D1D'
 # keychain ~/.ssh/id_?sa
 fbpanel &
 xscreensaver &
-# /usr/lib/gvfs/gvfsd
-# /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
 /usr/lib/ibus/ibus-ui-gtk3 &
 /usr/bin/pulseaudio --start --log-target=syslog
-# nm-applet &
-# clipit &
-blueman-applet &
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet-complete
-~/.scripts/start-git-annex &
+$(sleep 3600 && git-annex assistant --autostart) &
 ~/.x_scripts/keyboard_config
+
+# Gnome stuff
+nm-applet &
+/usr/lib/gvfs/gvfsd &
+/usr/lib/gvfs/gvfsd-fuse /run/user/${UID}/gvfs -f -o big_writes &
+parcellite &
+blueman-applet &

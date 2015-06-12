@@ -1,4 +1,5 @@
 - hosts: localhost
   roles:
     - common
+    - terminal_developer
     - gui_developer

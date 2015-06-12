@@ -81,7 +81,7 @@
 - name: "~/ dot files"
   file: force=yes src={{ gui_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
   with_items:
-  - xprofile
+  - xsession
   - xscreensaver
   - x_scripts
   - Xdefaults
@@ -132,3 +132,10 @@
   tags:
     - system
     - networking
+
+- name: "Remove problematic DNS stuff"
+  apt: name={{ item }} state=absent
+  with_items:
+    - avahi-daemon
+    - libnss-mdns
+    - avahi-utils

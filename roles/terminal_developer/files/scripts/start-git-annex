@@ -1,3 +1,0 @@
-#!/bin/sh
-sleep 3600
-git-annex assistant --autostart

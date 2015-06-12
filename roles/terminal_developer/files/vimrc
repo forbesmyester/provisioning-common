@@ -31,7 +31,6 @@ Plugin 'Soares/butane.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'airblade/vim-rooter'
 if &term =~ '256color$' || has('gui_running')
     Plugin 'Valloric/YouCompleteMe'
 else

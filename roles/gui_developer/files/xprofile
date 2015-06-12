@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# exec openbox &
-# sleep 1
-# ~/.config/openbox/autostart
