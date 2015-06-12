@@ -6,6 +6,9 @@
   with_items:
   - vim
   - pandoc
+  - tmux
+  - silversearcher-ag
+  - whois
 
 - name: "Dot Files"
   file: force=yes src={{ terminal_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
