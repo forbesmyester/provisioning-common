@@ -41,16 +41,14 @@
   with_items:
   - network-manager
   - xorg
-  # - slim
+  - slim
   - network-manager-gnome 
   - meld
   - arandr
   - openbox-gnome-session
-  - lightdm
   - xscreensaver
   - scrot
   - parcellite
-  - clipit
   - xscreensaver-screensaver-bsod
   - pcmanfm
   - xsel
@@ -65,6 +63,8 @@
   - lxappearance-obconf
   - firefox
   - firefox-locale-en
+  - pavucontrol
+  - mplayer
 
 - user: name="{{ lookup('env','USER') }}" group={{ item }}
   with_items:
