@@ -41,8 +41,8 @@
   with_items:
   - network-manager
   - xorg
-  - slim
-  - network-manager-gnome 
+  - lightdm
+  - network-manager-gnome
   - meld
   - arandr
   - openbox-gnome-session
