@@ -135,6 +135,7 @@
 
 - name: "Remove problematic DNS stuff"
   apt: name={{ item }} state=absent
+  sudo: true
   with_items:
     - avahi-daemon
     - libnss-mdns
