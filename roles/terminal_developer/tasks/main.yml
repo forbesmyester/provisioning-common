@@ -14,6 +14,7 @@
   file: force=yes src={{ terminal_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
   with_items:
   - scripts
+  - gitconfig
   - tmux.conf
   - profile
   - bashrc

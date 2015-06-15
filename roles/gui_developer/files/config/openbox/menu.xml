@@ -18,6 +18,15 @@
   <item label="PCManFM">
     <action name="Execute"><execute>pcmanfm</execute></action>
   </item>
+  <item label="Leafpad">
+    <action name="Execute"><execute>leafpad</execute></action>
+  </item>
+  <item label="Anki">
+    <action name="Execute"><execute>anki</execute></action>
+  </item>
+  <item label="Steam">
+    <action name="Execute"><execute>steam</execute></action>
+  </item>
   <item label="Firefox">
     <action name="Execute"><execute>firefox</execute></action>
   </item>

@@ -40,6 +40,10 @@
   sudo: true
   with_items:
   - network-manager
+  - steam
+  - leafpad
+  - ibus-anthy
+  - anthy
   - xorg
   - slim
   - network-manager-gnome 
