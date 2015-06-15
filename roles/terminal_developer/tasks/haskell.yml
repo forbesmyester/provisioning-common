@@ -43,7 +43,7 @@
     - haskell
     - packages
 
-- shell: /opt/cabal/{{ haskell.versions.cabal.major }}{{ haskell.versions.cabal.minor }/bin/cabal update
+- shell: "bash -c cabal update"
   tags:
     - haskell
     - packages

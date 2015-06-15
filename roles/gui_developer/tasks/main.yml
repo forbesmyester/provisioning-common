@@ -45,8 +45,8 @@
   - ibus-anthy
   - anthy
   - xorg
-  - slim
-  - network-manager-gnome 
+  - lightdm
+  - network-manager-gnome
   - meld
   - arandr
   - openbox-gnome-session
@@ -139,6 +139,7 @@
 
 - name: "Remove problematic DNS stuff"
   apt: name={{ item }} state=absent
+  sudo: true
   with_items:
     - avahi-daemon
     - libnss-mdns
