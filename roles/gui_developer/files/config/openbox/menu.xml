@@ -47,7 +47,7 @@
   </item>
   <separator />
   <item label="Suspend">
-      <action name="Execute"><execute>sudo pm-suspend</execute></action>
+      <action name="Execute"><execute>sudo /usr/sbin/pm-suspend</execute></action>
   </item>
   <item label="Exit">
     <action name="Exit" />

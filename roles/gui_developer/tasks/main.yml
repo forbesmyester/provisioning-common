@@ -103,7 +103,7 @@
   sudo: true
 
 - name: 'Allow suspend for admin user'
-  lineinfile: line="%plugdev admin=NOPASSWD:/usr/sbin/pm-suspend" state=present validate='visudo -cf %s' dest=/etc/sudoers
+  lineinfile: line="%plugdev ALL=(ALL) NOPASSWD: /usr/sbin/pm-suspend" state=present validate='visudo -cf %s' dest=/etc/sudoers
   sudo: true
 
 - name: 'Chrome: Apt Key'
