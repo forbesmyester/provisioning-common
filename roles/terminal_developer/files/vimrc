@@ -245,7 +245,7 @@ set diffopt+=vertical
 
 " = YouCompleteMe ===================================================
 
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 
@@ -331,7 +331,7 @@ let g:ctrlp_max_height = 22
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
 " let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git|bin|dist\'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git|bin|dist'
 map <C-B> :CtrlPBuffer<CR>
 
 " Plugin: plasticboy/vim-markdown
