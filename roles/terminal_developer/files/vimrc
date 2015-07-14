@@ -31,7 +31,7 @@ Plugin 'Soares/butane.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'airblade/vim-gitgutter'
-if &term =~ '256color$' || has('gui_running')
+if &term =~ '256color$' || has('gui_running') || &term == 'nvim'
     Plugin 'Valloric/YouCompleteMe'
 else
     Plugin 'altercation/vim-colors-solarized.git'
@@ -246,7 +246,7 @@ set diffopt+=vertical
 
 " = YouCompleteMe ===================================================
 
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 
@@ -332,7 +332,7 @@ let g:ctrlp_max_height = 22
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
 " let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git|bin|dist\'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git|bin|dist'
 map <C-B> :CtrlPBuffer<CR>
 
 " Plugin: plasticboy/vim-markdown
@@ -436,12 +436,14 @@ function! Gpullrequest()
     execute "cfile /tmp/" . $USER . ".vim.cfile"
 endfunction
 
+
 if &term == 'nvim'
     " if @% =~ '^term:'
     tnoremap <c-h> <c-\><c-n><c-w><c-h>
     tnoremap <c-j> <c-\><c-n><c-w><c-j>
     tnoremap <c-k> <c-\><c-n><c-w><c-k>
     tnoremap <c-l> <c-\><c-n><c-w><c-l>
+    autocmd BufWinEnter,WinEnter term://* startinsert
 endif
 
 imap <C-j> <ESC><C-j>
