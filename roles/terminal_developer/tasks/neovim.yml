@@ -16,6 +16,7 @@
 
 - name: "Neovim: Python Module"
   shell: "pip install --user neovim"
+  sudo: true
   tags:
     - neovim
 

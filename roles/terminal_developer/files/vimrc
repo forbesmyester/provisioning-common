@@ -37,6 +37,7 @@ else
     Plugin 'altercation/vim-colors-solarized.git'
 endif
 Plugin 'junegunn/vim-easy-align'
+" Plugin 'wincent/terminus'
 Plugin 'mtth/scratch.vim'
 " Plugin 'majutsushi/tagbar'
 
@@ -378,6 +379,11 @@ function RunUnitTest()
     if (exists("g:unittest"))
         " if &term == 'nvim'
         "     exec "terminal " . g:unittest
+        "
+        " :vslit
+        " :windo wincmd L
+        " :terminal ls
+        "
         " else
             call Send_keys_to_Tmux("enter")
             call SendToTmux(g:unittest . "\n")
@@ -452,3 +458,4 @@ command! -nargs=+ CommandCabbr call CommandCabbr(<f-args>)
 " Map `:bc` ex command to Bclose (to close buffers with multiple windows
 CommandCabbr bc Bclose
 
+let g:TerminusCursorShape=1
