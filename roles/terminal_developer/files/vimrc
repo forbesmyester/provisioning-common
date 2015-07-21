@@ -1,92 +1,106 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" set nocompatible              " be iMproved, required
+" filetype off                  " required
+" 
+" " set the runtime path to include Vundle and initialize
+" set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.sh
+  endif
+endfunction
 
-Plugin 'gmarik/Vundle'
+
+Plug 'gmarik/Vundle'
 
 " Libs
-Plugin 'tomtom/tlib_vim'
-Plugin 'Shougo/vimproc'
-Plugin 'tpope/timl'
-Plugin 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'Shougo/vimproc', { 'do': 'make' }
+Plug 'tpope/timl'
+Plug 'MarcWeber/vim-addon-mw-utils'
 
 " General
-Plugin 'gorkunov/smartpairs.vim'
-Plugin 'mbbill/undotree'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'Soares/butane.vim'
-Plugin 'tmhedberg/matchit'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'airblade/vim-gitgutter'
+Plug 'gorkunov/smartpairs.vim'
+Plug 'mbbill/undotree'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'kien/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'plasticboy/vim-markdown'
+Plug 'Soares/butane.vim'
+Plug 'tmhedberg/matchit'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'airblade/vim-gitgutter'
 if &term =~ '256color$' || has('gui_running') || &term == 'nvim'
-    Plugin 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 else
-    Plugin 'altercation/vim-colors-solarized.git'
+    Plug 'altercation/vim-colors-solarized.git'
 endif
-Plugin 'junegunn/vim-easy-align'
-Plugin 'mtth/scratch.vim'
-" Plugin 'majutsushi/tagbar'
+Plug 'junegunn/vim-easy-align'
+Plug 'mtth/scratch.vim'
+" Plug 'majutsushi/tagbar'
 
 " Colours / Style
-Plugin 'chriskempson/base16-vim'
-Plugin 'bling/vim-airline'
+Plug 'chriskempson/base16-vim'
+Plug 'bling/vim-airline'
 
 " CSV
-" Plugin 'chrisbra/csv.vim'
+" Plug 'chrisbra/csv.vim'
 
 " Jade
-Plugin 'digitaltoad/vim-jade'
+Plug 'digitaltoad/vim-jade'
 
 " Haskell
-" Plugin 'travitch/hasksyn'
-Plugin 'dag/vim2hs'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'godlygeek/tabular'
-" Plugin 'lukerandall/haskellmode-vim'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-indent'
+" Plug 'travitch/hasksyn'
+Plug 'dag/vim2hs'
+Plug 'eagletmt/neco-ghc'
+Plug 'godlygeek/tabular'
+" Plug 'lukerandall/haskellmode-vim'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
 
 " Javascript
-Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'pangloss/vim-javascript'
-Plugin 'marijnh/tern_for_vim'
+Plug 'jelera/vim-javascript-syntax'
+" Plug 'pangloss/vim-javascript'
+Plug 'marijnh/tern_for_vim'
 
 " Tmux
-Plugin 'jgdavey/tslime.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'mhinz/vim-tmuxify'
-" Plugin 'benmills/vimux'
+Plug 'jgdavey/tslime.vim'
+Plug 'christoomey/vim-tmux-navigator'
+" Plug 'mhinz/vim-tmuxify'
+" Plug 'benmills/vimux'
 
 " Yaml
-Plugin 'stephpy/vim-yaml'
+Plug 'stephpy/vim-yaml'
 
 " Clojure
-" Plugin 'tpope/vim-fireplace'
-" Plugin 'guns/vim-clojure-highlight'
-" Plugin 'guns/vim-clojure-static'
-" " Plugin 'tpope/vim-fireplace'
-" " Plugin 'typedclojure/vim-typedclojure'
-" Plugin 'guns/vim-sexp'
-" " Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-" " Plugin 'web-indent'
-" Plugin 'luochen1990/rainbow'
+" Plug 'tpope/vim-fireplace'
+" Plug 'guns/vim-clojure-highlight'
+" Plug 'guns/vim-clojure-static'
+" " Plug 'tpope/vim-fireplace'
+" " Plug 'typedclojure/vim-typedclojure'
+" Plug 'guns/vim-sexp'
+" " Plug 'tpope/vim-sexp-mappings-for-regular-people'
+" " Plug 'web-indent'
+" Plug 'luochen1990/rainbow'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
+
+" call vundle#end()
+" filetype plugin indent on
 
 
 if &term =~ '^screen'
@@ -183,8 +197,43 @@ set diffopt+=iwhite
 "     colorscheme solarized
 " endif
 
-" = vim-rooter  ===================================================
-let g:rooter_manual_only = 1
+" = FZF ===========================================================
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+command! FZFBuffer call fzf#run({'source':  reverse(<sid>buflist()), 'sink':    function('<sid>bufopen'), 'options': '+m', 'down':    len(<sid>buflist()) + 2 })
+
+" ==
+
+function! s:line_handler(l)
+  echo l
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! s:buffer_lines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
+
+command! FZFLines call fzf#run({ 'source':  <sid>buffer_lines(), 'sink':    function('<sid>line_handler'), 'options': '--extended --nth=3..', 'down':    '60%' })
+
+map <C-f> :FZF<CR>
+map <C-b> :FZFBuffer<CR>
+
 
 " = Sexp ==========================================================
 let g:sexp_filetypes = ''
@@ -324,15 +373,14 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ["eslint"]
 
 " Plugin: CtrlP
-let g:ctrlp_map = '<C-f>'
+" let g:ctrlp_map = '<C-f>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_regexp = 1
 let g:ctrlp_max_height = 22
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
-" let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git|bin|dist'
-map <C-B> :CtrlPBuffer<CR>
+" map <C-B> :CtrlPBuffer<CR>
 
 " Plugin: plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled=1
