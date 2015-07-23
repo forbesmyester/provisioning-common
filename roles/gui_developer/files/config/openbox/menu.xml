@@ -7,13 +7,16 @@
 
 <menu id="root-menu" label="Openbox 3">
   <item label="Terminal emulator">
-    <action name="Execute"><execute>x-terminal-emulator</execute></action>
+    <action name="Execute"><execute>rxvt-unicode -bc</execute></action>
   </item>
   <item label="Google Chrome">
     <action name="Execute"><execute>google-chrome-stable</execute></action>
   </item>
   <item label="Chromium">
     <action name="Execute"><execute>chromium-browser</execute></action>
+  </item>
+  <item label="Firefox">
+    <action name="Execute"><execute>firefox</execute></action>
   </item>
   <item label="PCManFM">
     <action name="Execute"><execute>pcmanfm</execute></action>
@@ -27,8 +30,11 @@
   <item label="Steam">
     <action name="Execute"><execute>steam</execute></action>
   </item>
-  <item label="Firefox">
-    <action name="Execute"><execute>firefox</execute></action>
+  <item label="Arandr">
+    <action name="Execute"><execute>arandr</execute></action>
+  </item>
+  <item label="Audio Mixer">
+    <action name="Execute"><execute>pavucontrol</execute></action>
   </item>
   <!-- This requires the presence of the 'menu' package to work -->
   <menu id="/Debian" />

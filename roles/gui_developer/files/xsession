@@ -1,4 +1,4 @@
 #!/bin/sh
 
 $(sleep 1 && ~/.config/openbox/autostart) &
-exec openbox
+dbus-launch --exit-with-session openbox
