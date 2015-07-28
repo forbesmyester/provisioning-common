@@ -33,6 +33,9 @@
   <item label="Arandr">
     <action name="Execute"><execute>arandr</execute></action>
   </item>
+  <item label="Scrot">
+    <action name="Execute"><execute>scrot -s</execute></action>
+  </item>
   <item label="Audio Mixer">
     <action name="Execute"><execute>pavucontrol</execute></action>
   </item>

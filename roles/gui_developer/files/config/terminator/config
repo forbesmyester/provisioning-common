@@ -13,6 +13,7 @@
     use_system_font = False
     cursor_color = "#d8d8d8"
     foreground_color = "#d8d8d8"
+    login_shell = True
     copy_on_selection = True
     background_color = "#181818"
     allow_bold = False

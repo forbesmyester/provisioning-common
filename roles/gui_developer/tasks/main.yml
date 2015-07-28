@@ -45,7 +45,8 @@
   - ibus-anthy
   - anthy
   - xorg
-  - lightdm
+  # - lightdm
+  - slim
   - network-manager-gnome
   - meld
   - arandr
