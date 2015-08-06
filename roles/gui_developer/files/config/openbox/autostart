@@ -30,7 +30,7 @@ xscreensaver &
 /usr/bin/pulseaudio --start --log-target=syslog
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet &
-# $(sleep 3600 && keychain && git-annex assistant --autostart) &
+$(sleep 3600 && keychain && git-annex assistant --autostart) &
 ~/.x_scripts/keyboard_config
 
 # Gnome stuff
