@@ -30,12 +30,12 @@ xscreensaver &
 /usr/bin/pulseaudio --start --log-target=syslog
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet &
-# $(sleep 3600 && git-annex assistant --autostart) &
+# $(sleep 3600 && keychain && git-annex assistant --autostart) &
 ~/.x_scripts/keyboard_config
 
 # Gnome stuff
 nm-applet &
 # /usr/lib/gvfs/gvfsd &
 # /usr/lib/gvfs/gvfsd-fuse /var/run/user/${UID}/gvfs -f -o big_writes &
-# parcellite &
+parcellite &
 # blueman-applet &
