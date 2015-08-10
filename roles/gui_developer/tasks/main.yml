@@ -45,9 +45,8 @@
   - ibus-anthy
   - anthy
   - xorg
-  # - lightdm
-  - slim
   - network-manager-gnome
+  - xdm
   - meld
   - arandr
   - openbox-gnome-session
@@ -70,6 +69,7 @@
   - firefox-locale-en
   - pavucontrol
   - mplayer
+  - consolekit
 
 - user: name="{{ lookup('env','USER') }}" group={{ item }}
   with_items:
@@ -142,6 +142,7 @@
   apt: name={{ item }} state=absent
   sudo: true
   with_items:
+    - lightdm
     - avahi-daemon
     - libnss-mdns
     - avahi-utils
