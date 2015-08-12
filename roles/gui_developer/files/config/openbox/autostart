@@ -38,4 +38,5 @@ nm-applet &
 # /usr/lib/gvfs/gvfsd &
 # /usr/lib/gvfs/gvfsd-fuse /var/run/user/${UID}/gvfs -f -o big_writes &
 parcellite &
+fdpowermon &
 # blueman-applet &

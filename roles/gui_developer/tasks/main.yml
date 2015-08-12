@@ -46,7 +46,9 @@
   - anthy
   - xorg
   - network-manager-gnome
+  - notify-osd
   - xdm
+  - fdpowermon
   - meld
   - arandr
   - openbox-gnome-session
