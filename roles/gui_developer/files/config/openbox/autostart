@@ -31,7 +31,7 @@ xscreensaver &
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet &
 $(sleep 3600 && keychain && git-annex assistant --autostart) &
-~/.x_scripts/keyboard_config
+# ~/.x_scripts/keyboard_config
 
 # Gnome stuff
 nm-applet &
