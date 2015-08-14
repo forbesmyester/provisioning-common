@@ -346,6 +346,8 @@ let g:necoghc_enable_detailed_browse = 1
 " = Key Bindings ======================================================
 " let mapleader = "\<space>"
 map U <C-r>
+map <C-o> ]c
+map <C-i> [c
 nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nmap <silent> <leader>/ :nohlsearch<ESC>
 imap <Home> <esc>^i
