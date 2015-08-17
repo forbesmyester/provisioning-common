@@ -35,12 +35,20 @@
     - numix-icon-theme-circle
     - numix-plymouth-theme
 
+# steam	steam/license	note	
+# steam	steam/purge	note	
+# steam	steam/question	select	I AGREE
+# debconf-get-selections
+- name: 'Other: Install'
+  apt: name=steam state=present update_cache=yes
+  sudo: true
+
+
 - name: 'Other: Install'
   apt: name={{ item }} state=present update_cache=yes
   sudo: true
   with_items:
   - network-manager
-  - steam
   - leafpad
   - ibus-anthy
   - anthy
@@ -148,3 +156,8 @@
     - avahi-daemon
     - libnss-mdns
     - avahi-utils
+
+
+- name: 'Stop Plymouth Screwing up XDM'
+  lineinfile: regexp="^GRUB_CMDLINE_LINUX_DEFAULT=" line="GRUB_CMDLINE_LINUX_DEFAULT=\"\"" state=present validate="update-grub" dest="/etc/default/grub"
+  sudo: true
