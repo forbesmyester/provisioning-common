@@ -430,17 +430,22 @@ let g:tslime_ensure_trailing_newlines = 1
 
 function RunUnitTest()
     if (exists("g:unittest"))
-        " if &term == 'nvim'
-        "     exec "terminal " . g:unittest
-        "
-        " :vslit
-        " :windo wincmd L
-        " :terminal ls
-        "
-        " else
+        if &term == 'nvim'
+            exec "windo wincmd l"
+            sleep 1
+            " call feedkeys("C-w l")
+            call feedkeys("i" . g:unittest . "\n")
+            sleep 1
+            exec "windo wincmd h"
+            " :vsplit
+            " exec "terminal " . g:unittest
+            "
+            " :terminal ls
+            "
+        else
             call Send_keys_to_Tmux("enter")
             call SendToTmux(g:unittest . "\n")
-        " endif
+        endif
     endif
 endfunction
 function SetUnitTest()
