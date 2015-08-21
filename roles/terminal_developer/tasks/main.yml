@@ -38,3 +38,6 @@
 # - include: ./brew.yml
 - include: ./virtualbox.yml
 - include: ./docker.yml
+  sudo: true
+  tags:
+    - docker
