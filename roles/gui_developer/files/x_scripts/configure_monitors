@@ -5,4 +5,6 @@ if [ ! -f $SCREEN_CONFIG ]; then
     echo "COULD NOT FIND FILE $SCREEN_CONFIG"
     exit 1
 fi
+echo $SCREEN_CONFIG
 $SCREEN_CONFIG
+xrandr --dpi 96

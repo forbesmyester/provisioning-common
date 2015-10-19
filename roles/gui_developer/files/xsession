@@ -1,5 +1,6 @@
 #!/bin/sh
 
+keychain --noask
+eval "$(gpg-agent --daemon)"
 $(sleep 1 && ~/.config/openbox/autostart) &
-# dbus-launch --exit-with-session openbox
 ck-launch-session openbox

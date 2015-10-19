@@ -24,8 +24,14 @@
   <item label="Leafpad">
     <action name="Execute"><execute>leafpad</execute></action>
   </item>
+  <item label="Calc">
+    <action name="Execute"><execute>xcalc</execute></action>
+  </item>
   <item label="Anki">
     <action name="Execute"><execute>anki</execute></action>
+  </item>
+  <item label="RoboMongo">
+    <action name="Execute"><execute>robomongo</execute></action>
   </item>
   <item label="Steam">
     <action name="Execute"><execute>steam</execute></action>

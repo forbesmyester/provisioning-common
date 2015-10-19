@@ -26,17 +26,17 @@ xsetroot -solid '#1D1D1D'
 fbpanel &
 xscreensaver &
 # ibus-daemon &
-/usr/lib/ibus/ibus-ui-gtk3 &
+$( sleep 10 && [ $(ps aux | grep fozz | grep ' \/.*ibus\-ui\-gtk3' | wc -l ) -eq 0 ] && /usr/lib/ibus/ibus-ui-gtk3 & ) &
 /usr/bin/pulseaudio --start --log-target=syslog
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet &
-$(sleep 3600 && keychain && git-annex assistant --autostart) &
+$(sleep 3600 && git-annex assistant --autostart) &
 # ~/.x_scripts/keyboard_config
 
 # Gnome stuff
 nm-applet &
 # /usr/lib/gvfs/gvfsd &
 # /usr/lib/gvfs/gvfsd-fuse /var/run/user/${UID}/gvfs -f -o big_writes &
-parcellite &
-fdpowermon &
+clipit &
+$(sleep 5 && fdpowermon &) &
 # blueman-applet &

@@ -1,6 +1,6 @@
 #!/bin/bash
-if [ $(tmux show-option | grep "^$1 " | sed 's/.* //') == 'on' ]; then
-    tmux set $1 off
-else
+if [ $(tmux show-option | grep "^$1 " | sed 's/.* //') == 'off' ]; then
     tmux set $1 on
+else
+    tmux set $1 off
 fi

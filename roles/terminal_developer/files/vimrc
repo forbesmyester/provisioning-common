@@ -78,7 +78,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'marijnh/tern_for_vim'
 
 " Typescript
-Plug 'Quramy/tsuquyomi'
+Plug 'forbesmyester/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
 
 " Tmux
@@ -299,7 +299,7 @@ set diffopt+=vertical
 " = YouCompleteMe ===================================================
 
 let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:ycm_semantic_triggers = {'haskell' : ['.'], 'typescript' : ['.']}
 
 
 "
@@ -367,6 +367,9 @@ let g:multi_cursor_next_key='<C-A-n>'
 let g:multi_cursor_prev_key='<C-n>'
 let g:multi_cursor_skip_key='<C-A-m>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" = Typescript =====================================================
+let g:tsuquyomi_disable_default_mappings = 1
 
 " = Syntastic ======================================================
 let g:syntastic_always_populate_loc_list = 1
@@ -462,6 +465,7 @@ function SetUnitTest()
 endfunction
 
 function! StripCommentBeforeTmuxPost(s)
+    return a:s
     let r = matchstr(a:s, '\w.*')
     if empty(r)
         return a:s
@@ -471,9 +475,9 @@ endfunction
 
 nmap <leader>R <Plug>SetTmuxVars
 nmap <leader><leader>R <Plug>SetTmuxVars
-vmap <leader><Enter> :call SendToTmux(StripCommentBeforeTmuxPost(@*))<CR>
+vmap <leader><Enter> <ESC>:call SendToTmux(StripCommentBeforeTmuxPost(@* . "\n\n"))<CR>
 nmap <leader><Enter> <S-v><leader><Enter>
-vmap <leader>r :call SendToTmux(@*)<CR><ESC>
+vmap <leader>r :call <ESC>SendToTmux(@* . "\n\n")<CR>
 nmap <leader><leader>r :call SetUnitTest()<CR>
 nmap <leader>r :call RunUnitTest()<CR>
 nmap <leader>c :call Send_keys_to_Tmux("C-c")<CR>

@@ -51,9 +51,7 @@ XDEBUG_CONFIG=ECLIPSE_DBGP
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 source ~/.nvm/nvm.sh
-PATH=~/.stackage/sandboxes/ghc-7.8.4/lts-2.9-arcanum-1/bin:/opt/ghc/7.8.4/bin:/opt/happy/1.19.4/bin:/opt/cabal/1.20/bin/:/opt/alex/3.1.3/bin:~/.x_scripts:~/.scripts:~/.bin:~/.vendor/bin:~/.cabal/bin:node_modules/.bin:~/.linuxbrew/bin:${PATH}
+PATH=~/.x_scripts:~/.scripts:~/.bin:~/.vendor/bin:~/.cabal/bin:node_modules/.bin:~/.linuxbrew/bin:${PATH}
 
-# DMGT MODS
-export CC_ROOT=~/Projects/cc
 export NODE_ENV=development
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
