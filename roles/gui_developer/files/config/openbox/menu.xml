@@ -9,8 +9,14 @@
   <item label="Terminal emulator">
     <action name="Execute"><execute>rxvt-unicode -bc</execute></action>
   </item>
-  <item label="Google Chrome">
-    <action name="Execute"><execute>google-chrome-stable</execute></action>
+  <item label="Chrome (Forbesmyester)">
+    <action name="Execute"><execute>google-chrome-stable --profile-directory="Default"</execute></action>
+  </item>
+  <item label="Chrome (Code)">
+    <action name="Execute"><execute>google-chrome-stable --profile-directory="Profile 3"</execute></action>
+  </item>
+  <item label="Chrome (Landtech)">
+    <action name="Execute"><execute>google-chrome-stable --profile-directory="Profile 4"</execute></action>
   </item>
   <item label="Chromium">
     <action name="Execute"><execute>chromium-browser</execute></action>
