@@ -1,6 +1,6 @@
 #!/bin/sh
 CURRENT_WINDOW=`xdotool getactivewindow`
-WIDS=`xdotool search --name "Chromium"`
+WIDS=`xdotool search --name "$1"`
 for W in $WIDS
 do
     WID=$W
