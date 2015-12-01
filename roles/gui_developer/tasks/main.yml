@@ -69,6 +69,8 @@
   - rxvt-unicode-256color
   - chromium-browser
   - openbox
+  - xfce4-settings
+  - xfce4-session
   - pm-utils
   - keychain
   - gitk

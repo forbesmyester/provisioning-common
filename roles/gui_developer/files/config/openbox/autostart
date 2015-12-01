@@ -30,11 +30,11 @@ $( sleep 10 && [ $(ps aux | grep fozz | grep ' \/.*ibus\-ui\-gtk3' | wc -l ) -eq
 /usr/bin/pulseaudio --start --log-target=syslog
 # /usr/bin/gnome-sound-applet &
 /usr/lib/x86_64-linux-gnu/indicator-applet &
-$(sleep 3600 && git-annex assistant --autostart) &
+# $(sleep 3600 keychain ~/.ssh/id_?sa && git-annex assistant --autostart) &
 # ~/.x_scripts/keyboard_config
 
 # Gnome stuff
-nm-applet &
+###### nm-applet &
 # /usr/lib/gvfs/gvfsd &
 # /usr/lib/gvfs/gvfsd-fuse /var/run/user/${UID}/gvfs -f -o big_writes &
 clipit &

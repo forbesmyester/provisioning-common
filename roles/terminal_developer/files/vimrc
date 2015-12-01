@@ -214,6 +214,7 @@ function! s:bufopen(e)
 endfunction
 
 command! FZFBuffer call fzf#run({'source':  reverse(<sid>buflist()), 'sink':    function('<sid>bufopen'), 'options': '+m', 'down':    len(<sid>buflist()) + 2 })
+" command! FZFBuffer call fzf#run({'source':  reverse(<sid>buflist()), 'sink':    function('<sid>bufopen'), 'options': '+m', 'down':    "80%" })
 
 " ==
 
@@ -241,15 +242,6 @@ map <C-b> :FZFBuffer<CR>
 
 " = Sexp ==========================================================
 let g:sexp_filetypes = ''
-
-" = EasyClip ======================================================
-let g:EasyClipUseCutDefaults = 0
-" nmap <leader>d <Plug>MoveMotionPlug
-" xmap <leader>d <Plug>MoveMotionXPlug
-" nmap <leader>D <Plug>MoveMotionEndOfLinePlug
-" nmap <leader>dd <Plug>MoveMotionLinePlug
-" nmap <leader>c :EasyClipBeforeYank<cr>c
-" nmap <leader>C :EasyClipBeforeYank<cr>C
 
 " = Breakindent Patch =============================================
 if exists("&breakindent")
@@ -289,7 +281,7 @@ augroup LineNumberFlip
 	au insertenter * :set norelativenumber
 	au insertleave * :set relativenumber
 augroup end
-map <leader>/ :set norelativenumber<CR>
+map <leader>: :set norelativenumber<CR>
 
 " = Fugitive ======================================================
 
@@ -398,6 +390,7 @@ let g:syntastic_yaml_checkers = ["pyyaml"]
 
 " Plugin: plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_no_default_key_mappings=1
 autocmd FileType md set wrap|set linebreak|set nolist "|set textwidth=0|set wrapmargin=0|set formatoptions+=1
 
 
@@ -481,6 +474,7 @@ vmap <leader>r :call <ESC>SendToTmux(@* . "\n\n")<CR>
 nmap <leader><leader>r :call SetUnitTest()<CR>
 nmap <leader>r :call RunUnitTest()<CR>
 nmap <leader>c :call Send_keys_to_Tmux("C-c")<CR>
+nmap <leader>m mMgg"zyG:call SendToTmux(@z . "\n\n")<CR>'M
 
 " vmap <C-Space>r :call SendToTmux(@* . "\n")<CR>
 autocmd BufWritePost * :call RunUnitTest()

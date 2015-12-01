@@ -13,9 +13,9 @@ export PYTHONPATH
 # 	export TERM=xterm-256color
 # 	. ~/.vendor/base16-shell/base16-default.dark.sh
 # fi
-# if [ -n "$TMUX" ] && [ -n "$DISPLAY" ]; then
-# 	export TERM=screen-256color
-# fi
+if [ -n "$TMUX" ] && [ -n "$DISPLAY" ]; then
+	export TERM=screen-256color
+fi
 # 
 #export EDITOR JAVA_HOME JAVA_PATH JDK_HOME CLASSPATH http_proxy
 export EDITOR http_proxy
