@@ -47,7 +47,6 @@ LANG=en_GB.UTF8
 LC_ALL=en_GB.UTF8
 LC_CTYPE=en_GB.UTF8
 SHELL=/bin/bash
-XDEBUG_CONFIG=ECLIPSE_DBGP
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 source ~/.nvm/nvm.sh

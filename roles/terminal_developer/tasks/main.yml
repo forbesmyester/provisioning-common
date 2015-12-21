@@ -11,6 +11,12 @@
   - silversearcher-ag
   - whois
 
+- name: 'More Required Programs'
+  pip: name={{ item }} state=present
+  sudo: true
+  with_items:
+    - httpie
+
 - name: "Dot Files"
   file: force=yes src={{ terminal_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
   with_items:

@@ -12,9 +12,6 @@
   <item label="Chrome (Forbesmyester)">
     <action name="Execute"><execute>google-chrome-stable --profile-directory="Default"</execute></action>
   </item>
-  <item label="Chrome (Code)">
-    <action name="Execute"><execute>google-chrome-stable --profile-directory="Profile 3"</execute></action>
-  </item>
   <item label="Chrome (Landtech)">
     <action name="Execute"><execute>google-chrome-stable --profile-directory="Profile 4"</execute></action>
   </item>
@@ -29,6 +26,9 @@
   </item>
   <item label="Leafpad">
     <action name="Execute"><execute>leafpad</execute></action>
+  </item>
+  <item label="Libreoffice">
+    <action name="Execute"><execute>libreoffice</execute></action>
   </item>
   <item label="Calc">
     <action name="Execute"><execute>xcalc</execute></action>
@@ -46,7 +46,7 @@
     <action name="Execute"><execute>arandr</execute></action>
   </item>
   <item label="Scrot">
-    <action name="Execute"><execute>scrot -s</execute></action>
+      <action name="Execute"><execute>scrot -s '/tmp/%F-%T.png'</execute></action>
   </item>
   <item label="Audio Mixer">
     <action name="Execute"><execute>pavucontrol</execute></action>

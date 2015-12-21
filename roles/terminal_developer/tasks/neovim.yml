@@ -15,8 +15,10 @@
     - neovim
 
 - name: "Neovim: Python Module"
-  shell: "pip install --user neovim"
+  pip: name={{ item }} state=present
   sudo: true
+  with_items:
+    - neovim
   tags:
     - neovim
 

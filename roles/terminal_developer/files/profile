@@ -26,6 +26,7 @@ alias tnew='tmux new-session -As "`basename $PWD`"'
 if [ -t 1 ]; then
     mesg n
     stty -ixon
+    # stty stop undef 
 
     function aliasffmpegcut() {
         ffmpeg -ss $1 -i $3  -t $2 -acodec copy -vcodec copy -async 1 $4

@@ -40,3 +40,4 @@ $( sleep 10 && [ $(ps aux | grep fozz | grep ' \/.*ibus\-ui\-gtk3' | wc -l ) -eq
 clipit &
 $(sleep 5 && fdpowermon &) &
 # blueman-applet &
+xkbcomp -I$HOME/.xkbmap ~/.xkbmap/map  $DISPLAY
