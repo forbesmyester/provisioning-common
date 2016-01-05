@@ -232,8 +232,8 @@ function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
 
-command! FZFBuffer call fzf#run({'source':  reverse(<sid>buflist()), 'sink':    function('<sid>bufopen'), 'options': '+m', 'down':    len(<sid>buflist()) + 2 })
-" command! FZFBuffer call fzf#run({'source':  reverse(<sid>buflist()), 'sink':    function('<sid>bufopen'), 'options': '+m', 'down':    "80%" })
+" command! FZFBuffer call fzf#run({'source':  reverse(<sid>buflist()), 'sink':    function('<sid>bufopen')})
+command! FZFBuffer call fzf#run({'source':  reverse(<sid>buflist()), 'sink':    function('<sid>bufopen'), 'options': '+m'})
 
 " ==
 
@@ -256,9 +256,9 @@ command! FZFLines call fzf#run({ 'source':  <sid>buffer_lines(), 'sink':    func
 " command! FZFLines call fzf#run({ 'source':  <sid>buffer_lines(), 'sink':    function('<sid>line_handler'), 'options': '--extended --nth=3..'})
 
 " map <C-f> :FZF!<CR>
-map <C-s> :FZF!<CR>
-map <C-e> :FZFBuffer<CR>
-" map <C-b> :FZFBuffer<CR>
+map <C-f> :FZF!<CR>
+" map <C-e> :FZFBuffer<CR>
+map <C-b> :FZFBuffer<CR>
 " map <C-f> <c-w>o:FZF!<CR>
 " map <C-b> <c-w>o:FZFBuffer<CR>
 
@@ -404,7 +404,7 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=0
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_typescript_checkers = []
@@ -465,14 +465,20 @@ let g:tslime_ensure_trailing_newlines = 1
 " 	endif
 " endfunction
 
+
+" let curwin = winnr()
+" let wins=[] 
+" windo call add(wins, [winnr(), bufname('%')]) 
+
 function RunUnitTestN()
+
+    let curwin = winnr()
     exec "windo wincmd l"
-    sleep 1
-    " call feedkeys("C-w l")
-    " call feedkeys("i" . g:unittest . "\n")
-    " sleep 1
-    let gu = (g:unittest . "\n\n")
-    put =gu
+    if bufname('%') =~ '^term:' 
+        sleep 1
+        let gu = (g:unittest . "\n\n")
+        put =gu
+    endif
     exec "windo wincmd h"
     normal! lh
 endfunction
@@ -483,12 +489,12 @@ function RunUnitTest()
         Neomake
     endif
     if (exists("g:unittest"))
-        if &term == 'nvim'
-            call RunUnitTestN()
-        else
+        " if &term == 'nvim'
+        "     call RunUnitTestN()
+        " else
             call Send_keys_to_Tmux("enter")
             call SendToTmux(g:unittest . "\n")
-        endif
+        " endif
     endif
 endfunction
 function SetUnitTest()
@@ -510,7 +516,7 @@ endfunction
 
 nmap <leader>R <Plug>SetTmuxVars
 nmap <leader><leader>R :unlet g:unittest<CR>
-vmap <leader><Enter> <ESC>:call SendToTmux(StripCommentBeforeTmuxPost(@* . "\n\n"))<CR>
+vmap <leader><Enter> <ESC>:sleep 1<CR>:call SendToTmux(StripCommentBeforeTmuxPost(@* . "\n\n"))<CR>
 nmap <leader><Enter> <S-v><leader><Enter>
 vmap <leader>r :call <ESC>SendToTmux(@* . "\n\n")<CR>
 nmap <leader><leader>r :call SetUnitTest()<CR>
@@ -551,12 +557,12 @@ if &term == 'nvim'
     " if @% =~ '^term:'
     tnoremap <ESC>: <c-\><c-n>:
     tnoremap <ESC>/ <c-\><c-n>/
-    tnoremap <ESC><ESC> <c-\><c-n>
+    tnoremap <ESC><ESC> 
     tnoremap <c-h> <c-\><c-n><c-w><c-h>
     tnoremap <c-j> <c-\><c-n><c-w><c-j>
     tnoremap <c-k> <c-\><c-n><c-w><c-k>
     tnoremap <c-l> <c-\><c-n><c-w><c-l>
-    autocmd BufWinEnter,WinEnter term://* startinsert
+    " autocmd BufWinEnter,WinEnter term://* startinsert
 endif
 
 imap <C-j> <ESC><C-j>
