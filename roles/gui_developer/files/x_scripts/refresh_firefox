@@ -1,8 +1,0 @@
-#!/bin/sh
-WIDS=`xdotool search --name "Mozilla Firefox"`
-for WID in $WIDS
-do
-	xdotool windowactivate $WID
-	xdotool key ctrl+l
-	xdotool key ctrl+F5
-done
