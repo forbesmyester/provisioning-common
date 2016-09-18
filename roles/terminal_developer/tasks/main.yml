@@ -11,23 +11,6 @@
   - silversearcher-ag
   - whois
 
-- name: 'More Required Programs'
-  pip: name={{ item }} state=present
-  sudo: true
-  with_items:
-    - httpie
-
-- name: "Dot Files"
-  file: force=yes src={{ terminal_developer.files }}/{{ item }} dest=~/.{{ item }} state=link
-  with_items:
-  - scripts
-  - gitconfig
-  - tmux.conf
-  - profile
-  - bashrc
-  - editorconfig
-  - gitignore
-
 - name: "Shell Colors"
   git: repo=git@github.com:chriskempson/base16-shell.git dest=~/.vendor/base16-shell
     

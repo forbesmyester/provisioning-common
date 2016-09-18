@@ -35,10 +35,10 @@
     - numix-icon-theme-circle
     - numix-plymouth-theme
 
-# steam	steam/license	note	
-# steam	steam/purge	note	
-# steam	steam/question	select	I AGREE
-# debconf-get-selections
+steam	steam/license	note	
+steam	steam/purge	note	
+steam	steam/question	select	I AGREE
+debconf-get-selections
 - name: 'Other: Install'
   apt: name=steam state=present update_cache=yes
   sudo: true
